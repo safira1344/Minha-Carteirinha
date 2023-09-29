@@ -6,7 +6,7 @@ void retangulos(int color, int x, int y, int l, int c);
 
 using namespace std;
 
-void perfumaria_menu_principal()
+void perfumaria_menu_principal()//tururu
 {
     gotoxy(67, 19);
     textbackground(WHITE);
