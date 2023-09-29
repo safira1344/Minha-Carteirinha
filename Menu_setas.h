@@ -8,16 +8,14 @@
 
 #include <iostream>
 #include "usuario.h"
-#include "atualizarCadastro.h"
 #include "mensagens.h"
 #include "relatorio.h"
 
 int menu_setas_principal();
-int menu_principal(Usuario *usuarios[]);
+int menu_principal(Usuario *usuario);
 
-int quantUsuarios = 0;
 
-int menu_principal(Usuario *usuarios[])
+int menu_principal(Usuario *usuario)
 {
 
     int escolha;
@@ -26,13 +24,14 @@ int menu_principal(Usuario *usuarios[])
     while (true) // laço infinito
     {
         cout << "Opcao 1 = criar usuario" << endl
-             << "opcao 4 = mostrarUsuarios"<<endl;
+             << "opcao 4 = mostrar usuario"<<endl;
+
         cin >> escolha;
-        cin.ignore();
+        cin.ignore();           // remover o buffer do teclado
         switch (escolha)
         {
         case 1:
-            criarUsuario(usuarios, quantUsuarios);
+            cadastrarUsuario(usuario);
             break;
         case 2:
             // relatorio();
@@ -41,7 +40,7 @@ int menu_principal(Usuario *usuarios[])
             // mensagens();
             break;
         case 4:
-            mostrarUsuarios(usuarios, quantUsuarios);
+            dadosUsuario(usuario);
             break;
         }
     }

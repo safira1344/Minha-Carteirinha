@@ -1,87 +1,68 @@
 #ifndef USUARIO_H_INCLUDED
 #define USUARIO_H_INCLUDED
-#define MAX_USUARIOS 1000
 
 #include <iostream>
 #include <stdio.h>
 
 using namespace std;
 
+struct Gastos
+{
+    double gastoAgua;
+    double gastoEnergia;
+    double gastoMoradia;
+    double gastoAlimentacao;
+    double gastoLazer;
+};
+struct Carteira
+{
+    double ganho;
+    Gastos gastos;
+    int diaVencimento;
+};
 struct Usuario
 {
-    int id;
     string cpf;
     string nome;
     string senha;
-    bool ativo;
+    Carteira carteira;
 };
 
-// // função para verificar se um cliente com o mesmo ID já existe
-// bool usuarioExiste(const Usuario *usuarios, int quantUsuarios, int id)
-// {
-//     for (int i = 0; i < quantUsuarios; ++i)
-//     {
-//         if (usuarios[i].id == id)
-//         {
-//             return true; // se cliente com o mesmo ID já existe
-//         }
-//     }
-//     return false; // nenhum cliente com o mesmo ID foi encontrado
-// }
-
-bool cpfExiste(Usuario *usuarios[], int quantUsuarios, string cpf)
-{
-    for (int i = 0; i < quantUsuarios; ++i)
-    {
-        if (usuarios[i]->cpf == cpf)
-        {
-            return true; // se cliente com o mesmo cpf já existe
-        }
-    }
-    return false; // nenhum cliente com o mesmo cpf foi encontrado
-}
-
 // função para criar um novo cadastro do usuário
-bool criarUsuario(Usuario *usuarios[], int &quantUsuarios)
+void cadastrarUsuario(Usuario *usuario)
 {
-    Usuario *novoUsuario = new Usuario; // criando um ponteiro novoUsuario do tipo Usuario
-    novoUsuario->id = quantUsuarios;    //(*novoUsuario).id == novoUsuario->id
     cout << "Digite seu nome de usuario: " << endl;
-    getline(cin, novoUsuario->nome);
-    bool cpfValido;
-    do
-    {
-        cout << "Digite seu cpf: " << endl;
-        getline(cin, novoUsuario->cpf);
-        cpfValido = !cpfExiste(usuarios, quantUsuarios, novoUsuario->cpf);
-        if (cpfValido == false)
-        {
-            cout << "CPF já cadastrado" << endl;
-        }
-    } while (cpfValido == false);
+    getline(cin, usuario->nome);
+
+    cout << "Digite seu cpf: " << endl;
+    getline(cin, usuario->cpf);
+
     cout << "Digite sua senha: " << endl;
-    getline(cin, novoUsuario->senha);
-    novoUsuario->ativo = true;
+    getline(cin, usuario->senha);
 
-    usuarios[quantUsuarios] = novoUsuario;
+    Carteira carteira;
 
-    quantUsuarios++;
+    cout << "Digite quanto voce ganha por mes: " << endl;
+    cin >> carteira.ganho;
+    cin.ignore();
+
+    usuario->carteira = carteira;
 
     cout << "Cadastro criado com sucesso!" << endl;
-    return true;
 }
 
-void mostrarUsuarios(Usuario *usuarios[], int &quantUsuarios)
+
+// #TO DO
+//atualizar cadastro;
+
+//cadsastrar gastos;
+
+void dadosUsuario(Usuario *usuario)
 {
-    for (int i = 0; i < quantUsuarios; i++)
-    {
-        cout << usuarios[i]->id << endl;
-        cout << usuarios[i]->nome << endl;
-        cout << usuarios[i]->cpf << endl;
-        cout << usuarios[i]->senha << endl;
-        cout << usuarios[i]->ativo << endl
-             << endl;
-    }
+    cout << "Nome: " << usuario->nome << endl;
+    cout << "Cpf: " << usuario->cpf << endl;
+    cout << "Senha: " << usuario->senha << endl;
+    cout << "Ganho: " << usuario->carteira.ganho << endl;
 }
 
 #endif

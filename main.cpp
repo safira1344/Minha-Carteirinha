@@ -9,8 +9,8 @@ using namespace std;
 
 int main()
 {
-    Usuario *usuarios[MAX_USUARIOS];
-    menu_principal(usuarios);
+    Usuario *usuario = new Usuario;
+    menu_principal(usuario);
     // menu_setas_principal();
     getch();
     // tela_final();
