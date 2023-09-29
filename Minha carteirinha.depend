@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1695636380 source:c:\users\ana maria\desktop\projeto prog ii\minha carteirinha\main.cpp
+	<iostream>
+	"gconio.h"
+	<windows.h>
+	"bibliotecas/interface.h"
+	"bibliotecas/Menu_setas.h"
+
+1676654112 c:\users\ana maria\desktop\projeto prog ii\minha carteirinha\gconio.h
+	<stdio.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<termios.h>
+
+1695635244 c:\users\ana maria\desktop\projeto prog ii\minha carteirinha\bibliotecas\interface.h
+
+1695636558 c:\users\ana maria\desktop\projeto prog ii\minha carteirinha\bibliotecas\menu_setas.h
+
+1695636382 source:c:\users\safi\desktop\minha carteirinha\main.cpp
+	<iostream>
+	"gconio.h"
+	<windows.h>
+	"bibliotecas/interface.h"
+	"bibliotecas/Menu_setas.h"
+
+1676654114 c:\users\safi\desktop\minha carteirinha\gconio.h
+	<stdio.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<termios.h>
+
+1695635246 c:\users\safi\desktop\minha carteirinha\bibliotecas\interface.h
+
+1695779690 c:\users\safi\desktop\minha carteirinha\bibliotecas\menu_setas.h
+
