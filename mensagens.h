@@ -16,7 +16,7 @@ struct Gasto {
 // Função que verifica se uma data está próxima da data atual
 bool dataProxima(const string& dataVenc) {
     time_t horaAtual = time(nullptr);
-    tm dataAtual = *horaLocal(&horaAtual);
+    tm dataAtual = *localtime(&horaAtual);
 
     // Converte a data de vencimento em uma estrutura tm tbm
     tm dataVencStruct = {};
@@ -31,17 +31,35 @@ bool dataProxima(const string& dataVenc) {
     return (diferenca >= 0 && diferenca <= 2 * 24 * 60 * 60); // 2 dias em segundos
 }
 
-
 int notificacao() {
-    ifstream inputFile("dados_financeiro.txt");
+    ifstream arquivo("dados_financeiro.txt");
 
-    if (!inputFile) {
+    if (!arquivo) {
         cout << "Erro ao abrir o arquivo para leitura." << endl;
         return 1;
     }
-}
 
-    inputFile.close();
+    std::string linha;
+    Gasto despesaAtual;
+
+    while (getline(arquivo, linha)) {
+        if (linha.find("Categoria: ") != string::npos) {
+            despesaAtual.categoria = linha.substr(11);
+        }
+        else if (linha.find("Valor: ") != string::npos) {
+            despesaAtual.valor = std::stod(linha.substr(7));
+        }
+        else if (linha.find("Data de Vencimento: ") != string::npos) {
+            despesaAtual.dataVenc = linha.substr(21);
+
+            if (dataProxima(despesaAtual.dataVenc)) {
+                cout << "Aviso: A data de vencimento para a categoria '" << despesaAtual.categoria
+                          << "' está próxima (" << despesaAtual.dataVenc << ")." << endl;
+            }
+        }
+    }
+
+    arquivo.close();
     return 0;
 }
 
