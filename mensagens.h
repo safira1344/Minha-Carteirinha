@@ -4,7 +4,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
 #include <ctime>
 
 
@@ -32,35 +31,17 @@ bool dataProxima(const string& dataVenc) {
     return (diferenca >= 0 && diferenca <= 2 * 24 * 60 * 60); // 2 dias em segundos
 }
 
-int main() {
-    vector<Gasto> listaGastos;
+
+int notificacao() {
     ifstream inputFile("dados_financeiro.txt");
 
     if (!inputFile) {
-        cerr << "Erro ao abrir o arquivo para leitura." << endl;
+        cout << "Erro ao abrir o arquivo para leitura." << endl;
         return 1;
     }
-
-    string linha;
-    Gasto gastosAtuais;
-
-    while (getline(inputFile, linha)) {
-        if (linha.find("Data de Vencimento: ") != string::npos) {
-            gastosAtuais.dataVenc = linha.substr(21);
-            listagastos.push_back(gastosAtuais);
-        }
-    }
+}
 
     inputFile.close();
-
-    // Verifica se alguma data de vencimento está próxima
-    //for (const Gasto& gasto : listagastos) {
-    //    if (dataProxima(gasto.dataVenc)) {
-    //        cout << "Aviso: A data de vencimento para a categoria '" << gasto.categoria
-    //                  << "' está próxima (" << gasto.dataVenc << ")." << endl;
-        }
-    }
-
     return 0;
 }
 
