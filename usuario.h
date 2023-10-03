@@ -39,31 +39,27 @@ bool arquivoContemDados()
     bool temDados = !arquivo.eof();
 
     arquivo.close();
+
     return temDados;
 }
 
 void salvarGastosNoArquivo(Gastos gastos[], int quantidadeDeGastos)
 {
     ofstream arquivo;
-    int indexGasto = 0;
     arquivo.open("dados_financeiro.txt", ios ::app);
 
-    if (arquivo.is_open())
-    {
-        while (indexGasto < quantidadeDeGastos)
-        {
-            arquivo << "Categoria: " << gastos[indexGasto].tipoGasto << "\n"
-                    << "Valor: " << gastos[indexGasto].valor
-                    << "\n"
-                    << "Data de vencimento: " << gastos[indexGasto].diaVencimento << "-" << gastos[indexGasto].mesVencimento
-                    << "-" << gastos[indexGasto].anoVencimento << "\n\n";
-
-            indexGasto++;
-        }
-    }
-    else
+    if (!arquivo.is_open())
     {
         cout << "Arquivo não foi aberto corretamente." << endl;
+        return;
+    }
+
+    for (int i = 0; i < quantidadeDeGastos; i++)
+    {
+        arquivo << "Categoria: " << gastos[i].tipoGasto << endl
+                << "Valor: " << gastos[i].valor << endl
+                << "Data de vencimento: " << gastos[i].diaVencimento << "-" << gastos[i].mesVencimento << "-" << gastos[i].anoVencimento << endl
+                << endl;
     }
 
     arquivo.close();
@@ -73,10 +69,12 @@ void atualizarGastos(Gastos gastos[], int quantidadeDeGastos)
 {
 
     int escolha;
+
     for (int i = 0; i < quantidadeDeGastos; i++)
     {
         cout << i << " - " << gastos[i].tipoGasto << endl;
     }
+    
     cout << "Digite seu tipo de gasto que deseja alterar a partir do seu respectivo numero.";
     cin >> escolha;
 
@@ -95,6 +93,7 @@ void atualizarGastos(Gastos gastos[], int quantidadeDeGastos)
     cin >> gastos[quantidadeDeGastos].anoVencimento;
 
     salvarGastosNoArquivo(gastos, quantidadeDeGastos);
+
     system("CLS");
 }
 
@@ -132,12 +131,16 @@ void importarUsuarioDoArquivo(Usuario *usuario)
     }
 
     string linha;
+
     getline(arquivo, linha);
     usuario->cpf = linha;
+
     getline(arquivo, linha);
     usuario->nome = linha;
+
     getline(arquivo, linha);
     usuario->senha = linha;
+
     getline(arquivo, linha);
     usuario->ganho = stod(linha); // stod = string to double
 
@@ -190,16 +193,11 @@ void cadastrarUsuario(Usuario *usuario)
     cout << "Digite seu cpf: " << endl;
     getline(cin, usuario->cpf);
 
-    cout << "Digite sua senha: " << endl;
-    getline(cin, usuario->senha);
-
     cout << "Digite quanto voce ganha por mes: " << endl;
     cin >> usuario->ganho;
     cin.ignore();
 
     salvarUsuarioNoArquivo(usuario);
-
-    cout << "Cadastro criado com sucesso!" << endl;
 }
 
 // função que atualiza o cadastro do usuario
@@ -225,29 +223,6 @@ void atualizarCadastro(Usuario *usuario)
     cout << "Cadastro atualizado com sucesso!" << endl;
 }
 
-//     ifstream arquivo;
-//     arquivo.open("dados_usuario.txt");
-
-//     if (!arquivo.is_open())
-//     {
-//         cout << "Erro ao abrir o arquivo para leitura." << endl;
-//         return;
-//     }
-
-//     string linha;
-//     getline(arquivo, linha);
-//     usuario->cpf = linha;
-//     getline(arquivo, linha);
-//     usuario->nome = linha;
-//     getline(arquivo, linha);
-//     usuario->senha = linha;
-//     getline(arquivo, linha);
-//     usuario->ganho = stod(linha); // stod = string to double
-
-//     arquivo.close();
-// }
-
-// função que cadastra os gastos
 void dadosUsuario(Usuario *usuario)
 {
     cout << "Nome: " << usuario->nome << endl;
