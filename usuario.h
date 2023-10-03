@@ -2,31 +2,184 @@
 #define USUARIO_H_INCLUDED
 
 #include <iostream>
+#include <fstream>
 #include <stdio.h>
 
 using namespace std;
 
 struct Gastos
 {
-    double gastoAgua;
-    double gastoEnergia;
-    double gastoMoradia;
-    double gastoAlimentacao;
-    double gastoLazer;
-};
-struct Carteira
-{
-    double ganho;
-    Gastos gastos;
+    string tipoGasto;
+    string categoriaDeGastos;
+    double valor;
     int diaVencimento;
+    int mesVencimento;
+    int anoVencimento;
 };
+
 struct Usuario
 {
     string cpf;
     string nome;
     string senha;
-    Carteira carteira;
+    double ganho;
 };
+
+bool arquivoContemDados()
+{
+    ifstream arquivo;
+    arquivo.open("dados_usuario.txt");
+
+    if (!arquivo.is_open())
+    {
+        return false;
+    }
+
+    // Verifica se o arquivo possui algum conteúdo
+    bool temDados = !arquivo.eof();
+
+    arquivo.close();
+    return temDados;
+}
+
+void salvarGastosNoArquivo(Gastos gastos[], int quantidadeDeGastos)
+{
+    ofstream arquivo;
+    int indexGasto = 0;
+    arquivo.open("dados_financeiro.txt", ios ::app);
+
+    if (arquivo.is_open())
+    {
+        while (indexGasto < quantidadeDeGastos)
+        {
+            arquivo << "Categoria: " << gastos[indexGasto].tipoGasto << "\n"
+                    << "Valor: " << gastos[indexGasto].valor
+                    << "\n"
+                    << "Data de vencimento: " << gastos[indexGasto].diaVencimento << "-" << gastos[indexGasto].mesVencimento
+                    << "-" << gastos[indexGasto].anoVencimento << "\n\n";
+
+            indexGasto++;
+        }
+    }
+    else
+    {
+        cout << "Arquivo não foi aberto corretamente." << endl;
+    }
+
+    arquivo.close();
+}
+
+void atualizarGastos(Gastos gastos[], int quantidadeDeGastos)
+{
+
+    int escolha;
+    for (int i = 0; i < quantidadeDeGastos; i++)
+    {
+        cout << i << " - " << gastos[i].tipoGasto << endl;
+    }
+    cout << "Digite seu tipo de gasto que deseja alterar a partir do seu respectivo numero.";
+    cin >> escolha;
+
+    system("CLS");
+
+    cout << "Qual o novo valor desse gasto? - Gasto atual: " << gastos[escolha].valor << endl;
+    cin >> gastos[escolha].valor;
+
+    cout << "Qual o nova dia de vencimento? - Dia atual: " << gastos[escolha].diaVencimento << endl;
+    cin >> gastos[escolha].diaVencimento;
+
+    cout << "Qual o novo mes de vencimento? - Mes atual: " << gastos[escolha].mesVencimento << endl;
+    cin >> gastos[quantidadeDeGastos].mesVencimento;
+
+    cout << "Qual o novo ano de vencimento? - Ano atual: " << gastos[escolha].anoVencimento << endl;
+    cin >> gastos[quantidadeDeGastos].anoVencimento;
+
+    salvarGastosNoArquivo(gastos, quantidadeDeGastos);
+    system("CLS");
+}
+
+//***uso do return em função void
+void salvarUsuarioNoArquivo(Usuario *usuario)
+{
+    ofstream arquivo;
+    arquivo.open("dados_usuario.txt");
+
+    if (!arquivo.is_open())
+    {
+        cout << "Erro ao abrir o arquivo para escrita." << endl;
+        return;
+    }
+
+    arquivo << usuario->cpf << endl
+            << usuario->nome << endl
+            << usuario->senha << endl
+            << usuario->ganho << endl;
+
+    arquivo.close();
+}
+
+//*** arquivo de acesso sequencial
+void importarUsuarioDoArquivo(Usuario *usuario)
+{
+
+    ifstream arquivo;
+    arquivo.open("dados_usuario.txt");
+
+    if (!arquivo.is_open())
+    {
+        cout << "Erro ao abrir o arquivo para leitura." << endl;
+        return;
+    }
+
+    string linha;
+    getline(arquivo, linha);
+    usuario->cpf = linha;
+    getline(arquivo, linha);
+    usuario->nome = linha;
+    getline(arquivo, linha);
+    usuario->senha = linha;
+    getline(arquivo, linha);
+    usuario->ganho = stod(linha); // stod = string to double
+
+    arquivo.close();
+}
+
+int cadastrarGastos(Gastos gastos[])
+{
+    char opcao;
+    int quantidadeDeGastos = 0;
+
+    do
+    {
+        cout << "Descreva qual sua categoria de gastos. (Exemplo: 'Alimentacao, Moradia, Energia, Agua...')" << endl;
+        getline(cin, gastos[quantidadeDeGastos].tipoGasto);
+
+        cout << "Qual o valor do gasto com essa categoria: " << endl;
+        cin >> gastos[quantidadeDeGastos].valor;
+
+        cout << "Digite a dia de vencimento: " << endl;
+        cin >> gastos[quantidadeDeGastos].diaVencimento;
+
+        cout << "Digite o mes de vencimento:" << endl;
+        cin >> gastos[quantidadeDeGastos].mesVencimento;
+
+        cout << "Digite ano de vencimento: " << endl;
+        cin >> gastos[quantidadeDeGastos].anoVencimento;
+
+        cout << "Deseja continuar cadastrando? (S / N) " << endl;
+        cin >> opcao;
+        cin.ignore();
+
+        quantidadeDeGastos++;
+
+        system("CLS");
+
+    } while (opcao == 'S' || opcao == 's');
+
+    salvarGastosNoArquivo(gastos, quantidadeDeGastos);
+
+    return quantidadeDeGastos;
+}
 
 // função para criar um novo cadastro do usuário
 void cadastrarUsuario(Usuario *usuario)
@@ -40,29 +193,67 @@ void cadastrarUsuario(Usuario *usuario)
     cout << "Digite sua senha: " << endl;
     getline(cin, usuario->senha);
 
-    Carteira carteira;
-
     cout << "Digite quanto voce ganha por mes: " << endl;
-    cin >> carteira.ganho;
+    cin >> usuario->ganho;
     cin.ignore();
 
-    usuario->carteira = carteira;
+    salvarUsuarioNoArquivo(usuario);
 
     cout << "Cadastro criado com sucesso!" << endl;
 }
 
+// função que atualiza o cadastro do usuario
+void atualizarCadastro(Usuario *usuario)
+{
+    cout << "Atualizando dados do cadastro de " << usuario->nome << endl;
 
-// #TO DO
-//atualizar cadastro;
+    cout << "Digite seu novo nome de usuario: "; // atualizar o novo nome do usuário
+    getline(cin, usuario->nome);
 
-//cadsastrar gastos;
+    cout << "Digite seu novo cpf: "; // atualizar o cpf do usuário
+    getline(cin, usuario->cpf);
 
+    cout << "Digite sua nova senha: "; // atualizar a senha do usuário
+    getline(cin, usuario->senha);
+
+    cout << "Digite seu novo ganho por mes: "; // atualizar o novo ganho do usuário
+    cin >> usuario->ganho;
+    cin.ignore();
+
+    salvarUsuarioNoArquivo(usuario);
+
+    cout << "Cadastro atualizado com sucesso!" << endl;
+}
+
+//     ifstream arquivo;
+//     arquivo.open("dados_usuario.txt");
+
+//     if (!arquivo.is_open())
+//     {
+//         cout << "Erro ao abrir o arquivo para leitura." << endl;
+//         return;
+//     }
+
+//     string linha;
+//     getline(arquivo, linha);
+//     usuario->cpf = linha;
+//     getline(arquivo, linha);
+//     usuario->nome = linha;
+//     getline(arquivo, linha);
+//     usuario->senha = linha;
+//     getline(arquivo, linha);
+//     usuario->ganho = stod(linha); // stod = string to double
+
+//     arquivo.close();
+// }
+
+// função que cadastra os gastos
 void dadosUsuario(Usuario *usuario)
 {
     cout << "Nome: " << usuario->nome << endl;
     cout << "Cpf: " << usuario->cpf << endl;
     cout << "Senha: " << usuario->senha << endl;
-    cout << "Ganho: " << usuario->carteira.ganho << endl;
+    cout << "Ganho: " << usuario->ganho << endl;
 }
 
 #endif

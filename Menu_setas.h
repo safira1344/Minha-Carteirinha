@@ -12,35 +12,49 @@
 #include "relatorio.h"
 
 int menu_setas_principal();
-int menu_principal(Usuario *usuario);
+int menu_principal(Usuario *usuario, Gastos *gastos);
 
-
-int menu_principal(Usuario *usuario)
+int menu_principal(Usuario *usuario, Gastos *gastos)
 {
-
     int escolha;
+    int quantidadeDeGastos = 0;
     // escolha = menu_setas_principal();
 
     while (true) // laço infinito
     {
-        cout << "Opcao 1 = criar usuario" << endl
-             << "opcao 4 = mostrar usuario"<<endl;
+        cout << "Opcao 1 = atualizar usuario" << endl
+             << "Opcao 2 = mostrar usuario" << endl
+             << "Opcao 3 = cadastrar gastos" << endl
+             << "Opcao 4 = atualizar gastos" << endl
+             << "Opcao 5 = " << endl;
 
         cin >> escolha;
-        cin.ignore();           // remover o buffer do teclado
+        cin.ignore(); // remover o buffer do teclado
+
+        system("CLS");
+
         switch (escolha)
         {
         case 1:
-            cadastrarUsuario(usuario);
+            atualizarCadastro(usuario);
             break;
         case 2:
-            // relatorio();
+            dadosUsuario(usuario);
             break;
         case 3:
-            // mensagens();
+            quantidadeDeGastos = cadastrarGastos(gastos);
             break;
         case 4:
-            dadosUsuario(usuario);
+            atualizarGastos(gastos, quantidadeDeGastos);
+            break;
+        case 5:
+
+            break;
+        case 6:
+
+            break;
+        case 7:
+
             break;
         }
     }
