@@ -28,4 +28,11 @@ Data de vencimento: 12-12-2012
 
 Categoria: moradia
 Valor: 456
-Data de vencimento: 11-12-2012
+Data de vencimento: 11-12-2012Categoria: agua
+Valor: 78
+Data de vencimento: 20-11-2013
+
+Categoria: energia
+Valor: 7854
+Data de vencimento: 12-12-2012
+

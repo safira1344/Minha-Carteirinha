@@ -43,6 +43,13 @@ bool arquivoContemDados()
     return temDados;
 }
 
+// void definirTetoDeGastos(double teto)
+// {
+//     tetoDeGastos = teto;
+//     cout << "Teto de gastos definido para: R$" << tetoDeGastos << endl;
+// }
+
+
 void salvarGastosNoArquivo(Gastos gastos[], int quantidadeDeGastos)
 {
     ofstream arquivo;
@@ -142,7 +149,7 @@ void importarUsuarioDoArquivo(Usuario *usuario)
     usuario->senha = linha;
 
     getline(arquivo, linha);
-    usuario->ganho = stod(linha); // stod = string to double
+    usuario->ganho = stod(linha);   // stod = string to double
 
     arquivo.close();
 }
@@ -150,7 +157,9 @@ void importarUsuarioDoArquivo(Usuario *usuario)
 int cadastrarGastos(Gastos gastos[])
 {
     char opcao;
+    char escolha;
     int quantidadeDeGastos = 0;
+    double tetoDeGastos = 0.0;
 
     do
     {
@@ -159,6 +168,19 @@ int cadastrarGastos(Gastos gastos[])
 
         cout << "Qual o valor do gasto com essa categoria: " << endl;
         cin >> gastos[quantidadeDeGastos].valor;
+
+        cout << "Deseja estipular um teto de gastos com essa categoria:  Digite S ou N"<<endl;
+        cin >> escolha;
+
+        // if(escolha == "S" || escolha == "s"){
+
+        // }
+
+        if (gastos[quantidadeDeGastos].valor > tetoDeGastos)
+        {
+            cout << "O valor do gasto excede o teto de gastos. Limite atual: R$" << tetoDeGastos << endl;
+            continue;       // pular este gasto e continuar com o próximo
+        }
 
         cout << "Digite a dia de vencimento: " << endl;
         cin >> gastos[quantidadeDeGastos].diaVencimento;
@@ -174,6 +196,7 @@ int cadastrarGastos(Gastos gastos[])
         cin.ignore();
 
         quantidadeDeGastos++;
+        
 
         system("CLS");
 
@@ -195,6 +218,9 @@ void cadastrarUsuario(Usuario *usuario)
 
     cout << "Digite quanto voce ganha por mes: " << endl;
     cin >> usuario->ganho;
+
+    cout <<"Digite sua senha de login: " <<endl;
+    cin >> usuario->senha;
     cin.ignore();
 
     salvarUsuarioNoArquivo(usuario);

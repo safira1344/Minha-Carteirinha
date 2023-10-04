@@ -26,7 +26,7 @@ int menu_principal(Usuario *usuario, Gastos *gastos)
              << "Opcao 2 = mostrar usuario" << endl
              << "Opcao 3 = cadastrar gastos" << endl
              << "Opcao 4 = atualizar gastos" << endl
-             << "Opcao 5 = " << endl;
+             << endl;
 
         cin >> escolha;
         cin.ignore(); // remover o buffer do teclado
