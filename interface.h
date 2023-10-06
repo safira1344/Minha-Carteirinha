@@ -12,129 +12,160 @@ void tela_incial()
     system("cls");
     moldurinha(0,155,0,39);
 
+    gotoxy(45,9);
+    cout <<" _           _  _  _  _  _           _  _           _        _  ";
+    gotoxy(45,10);
+    cout <<"(_) _     _ (_)(_)(_)(_)(_) _       (_)(_)         (_)     _(_)_     ";
+    gotoxy(45,11);
+    cout << "(_)(_)   (_)(_)   (_)   (_)(_)_     (_)(_)         (_)   _(_) (_)_   ";
+    gotoxy(45,12);
+    cout <<"(_) (_)_(_) (_)   (_)   (_)  (_)_   (_)(_) _  _  _ (_) _(_)     (_)_ ";
+    gotoxy(45,13);
+    cout <<"(_)   (_)   (_)   (_)   (_)    (_)_ (_)(_)(_)(_)(_)(_)(_) _  _  _ (_)";
+    gotoxy(45,14);
+    cout <<"(_)         (_)   (_)   (_)      (_)(_)(_)         (_)(_)(_)(_)(_)(_)";
+    gotoxy(45,15);
+    cout <<"(_)         (_) _ (_) _ (_)         (_)(_)         (_)(_)         (_)";
+    gotoxy(45,16);
+    cout <<"(_)         (_)(_)(_)(_)(_)         (_)(_)         (_)(_)         (_)";
 
-    gotoxy(43,4);
-    cout << "       *****   **    **                          *  ";
-    gotoxy(43,5);
-    cout << "  ******  ***** *****     *                  **                  ";
-    gotoxy(43,6);
-    cout << " **   *  *  ***** *****  ***                 **                  ";
-    gotoxy(43,7);
-    cout << "*    *  *   * **  * **    *                  **                  ";
-    gotoxy(43,8);
-    cout << "    *  *    *     *                          **                  ";
-    gotoxy(43,9);
-    cout << "   ** **    *     *     ***     ***  ****    **  ***      ****   ";
-    gotoxy(43,10);
-    cout << "   ** **    *     *      ***     **** **** * ** * ***    * ***  *";
-    gotoxy(43,11);
-    cout << "   ** **    *     *       **      **   ****  ***   ***  *   **** ";
-    gotoxy(43,12);
-    cout << "   ** **    *     *       **      **    **   **     ** **    **  ";
-    gotoxy(43,12);
-    cout << "   ** **    *     **      **      **    **   **     ** **    **  ";
-    gotoxy(43,13);
-    cout << "   *  **    *     **      **      **    **   **     ** **    **  ";
-    gotoxy(43,14);
-    cout << "      *     *      **     **      **    **   **     ** **    **  ";
-    gotoxy(43,14);
-    cout << "  ****      *      **     **      **    **   **     ** **    **  ";
-    gotoxy(43,15);
-    cout << " *  *****           **    *** *   ***   ***  **     **  ***** ** ";
-    gotoxy(43,16);
-    cout << "*     **                   ***     ***   ***  **    **   ***   **";
-    gotoxy(43,17);
-    cout << "*                                                   *            ";
-    gotoxy(43,18);
-    cout << "**                                                *             ";
-    gotoxy(43,19);
-    cout << "                                                  *              ";
-    gotoxy(43,20);
-    cout << "                                                 *               ";
+    gotoxy(2,19);
+    cout<<"   _  _  _            _        _  _  _  _    _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _     _  _  _  _           _  _           _        _  ";
+    gotoxy(2,20);
+    cout<<" _(_)(_)(_)  _      _(_)_     (_)(_)(_)(_) _(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_) _ (_)(_)(_)(_) _       (_)(_)         (_)     _(_)_   ";
+    gotoxy(2,21);
+    cout<<"(_)         (_)   _(_) (_)_   (_)         (_)     (_)      (_)               (_)   (_)         (_)   (_)   (_)(_)_     (_)(_)         (_)   _(_) (_)_  ";
+    gotoxy(2,22);
+    cout<<"(_)             _(_)     (_)_ (_) _  _  _ (_)     (_)      (_) _  _          (_)   (_) _  _  _ (_)   (_)   (_)  (_)_   (_)(_) _  _  _ (_) _(_)     (_)_ ";
+    gotoxy(2,23);
+    cout<<"(_)            (_) _  _  _ (_)(_)(_)(_)(_)        (_)      (_)(_)(_)         (_)   (_)(_)(_)(_)      (_)   (_)    (_)_ (_)(_)(_)(_)(_)(_)(_) _  _  _ (_)";
+    gotoxy(2,24);
+    cout<<"(_)          _ (_)(_)(_)(_)(_)(_)   (_) _         (_)      (_)               (_)   (_)   (_) _       (_)   (_)      (_)(_)(_)         (_)(_)(_)(_)(_)(_)";
+    gotoxy(2,25);
+    cout<<"(_) _  _  _ (_)(_)         (_)(_)      (_) _      (_)      (_) _  _  _  _  _ (_) _ (_)      (_) _  _ (_) _ (_)         (_)(_)         (_)(_)         (_)";
+    gotoxy(2,26);
+    cout<<"   (_)(_)(_)   (_)         (_)(_)         (_)     (_)      (_)(_)(_)(_)(_)(_)(_)(_)(_)         (_)(_)(_)(_)(_)         (_)(_)         (_)(_)         (_)";
 
-
-    gotoxy(16,22);
-    cout << "      * ***                                                                                            *  ";
-    gotoxy(16,23);
-    cout << "    *  ****  *                             *                 *                    *                  **   ";
-    gotoxy(16,24);
-    cout << "   *  *  ****                             **                ***                  ***                 **    ";
-    gotoxy(16,23);
-    cout << "  *  **   **                              **                 *                    *                  **    ";
-    gotoxy(16,24);
-    cout << " *  ***                   ***  ****     ********                   ***  ****                         **   ";
-    gotoxy(16,25);
-    cout << "**   **           ****     **** **** * ********     ***    ***      **** **** * ***     ***  ****    **  ***      ****   ";
-    gotoxy(16,26);
-    cout << "**   **          * ***  *   **   ****     **       * ***    ***      **   ****   ***     **** **** * ** * ***    * ***  *";
-    gotoxy(16,27);
-    cout << "**   **         *   ****    **            **      *   ***    **      **           **      **   ****  ***   ***  *   **** ";
-    gotoxy(16,28);
-    cout << "**   **        **    **     **            **     **    ***   **      **           **      **    **   **     ** **    **  ";
-    gotoxy(16,29);
-    cout << "**   **        **    **     **            **     ********    **      **           **      **    **   **     ** **    **  ";
-    gotoxy(16,30);
-    cout << " **  **        **    **     **            **     *******     **      **           **      **    **   **     ** **    **  ";
-    gotoxy(16,31);
-    cout << "  ** *      *  **    **     **            **     **          **      **           **      **    **   **     ** **    **  ";
-    gotoxy(16,32);
-    cout << "   ***     *   **    **     ***           **     ****    *   **      ***          **      **    **   **     ** **    **  ";
-    gotoxy(16,33);
-    cout << "    *******     ***** **     ***           **     *******    *** *    ***         *** *   ***   ***  **     **  ***** ** ";
-    gotoxy(16,34);
-    cout << "      ***        ***   **                          *****      ***                  ***     ***   ***  **    **   ***   **";
-    gotoxy(16,34);
-    cout << "                                                                                                            *           ";
-    gotoxy(16,35);
-    cout << "                                                                                                           *         ";
-    gotoxy(16,36);
-    cout << "                                                                                                         *           ";
-    gotoxy(16,37);
-    cout << "                                                                                                         *         ";
 
 
 }
 
-
-void perfumaria_menu_principal()//tururu
+void confirmar()
 {
-    gotoxy(67, 19);
+    int chave = 0;
     textbackground(WHITE);
     textcolor(BLACK);
-    cout << "ATUALIZAR CADASTRO";
+    gotoxy(70,29);
+    cout << "PRESSIONE ENTER";
+    while(chave!=224 && chave!=13)
+    {
+        gotoxy(70,30);
+        textbackground(MAGENTA);
+        std :: cout <<"            ";
+        gotoxy(70,30);
+        chave = getch();
+    }
+}
 
-    gotoxy(72, 24);
+
+void perfumaria_menu_principal(int cor)//tururu
+{
+    SetConsoleOutputCP(65001); // para permitir acentuação
+
+    gotoxy(66, 14);
+    textbackground(WHITE);
+    textcolor(BLACK);
+    cout << "VER MINHA CARTEIRINHA";
+
+    gotoxy(72, 19);
     textbackground(WHITE);
     textcolor(BLACK);
     cout << "RELATÓRIO";
 
-    gotoxy(72, 29);
+    gotoxy(71, 24);
+    textbackground(cor);
+    textcolor(BLACK);
+    cout << "NOTIFICAÇÕES";
+
+    gotoxy(71, 29);
     textbackground(WHITE);
     textcolor(BLACK);
-    cout << "MENSAGENS";
+    cout << "MEU PERFIL";
 
     gotoxy(74, 34);
     textbackground(WHITE);
     textcolor(BLACK);
     cout << "SAIR";
 }
-void interface_menu()
+
+void perfumariaMenuPerfil()
+{
+    SetConsoleOutputCP(65001); // para permitir acentuação
+
+    gotoxy(64,24);
+    textbackground(WHITE);
+    textcolor(BLACK);
+    cout<<"ATUALIZAR USUÁRIO E SENHA";
+    gotoxy(70,29);
+    textbackground(WHITE);
+    textcolor(BLACK);
+    cout<<"APAGAR USUÁRIO";
+    gotoxy(74,34);
+    textbackground(WHITE);
+    textcolor(BLACK);
+    cout<<"VOLTAR";
+}
+
+void perfumariaMenuCarteirinha()
+{
+    gotoxy(70,24);
+    textbackground(WHITE);
+    textcolor(BLACK);
+    cout<<"EDITAR DADOS";
+    gotoxy(69,29);
+    textbackground(WHITE);
+    textcolor(BLACK);
+    cout<<"ADICIONAR DADOS";
+    gotoxy(74,34);
+    textbackground(WHITE);
+    textcolor(BLACK);
+    cout<<"VOLTAR";
+
+}
+
+void interfaceMenuSecundario()
 {
     moldurinha(0, 155, 0, 39);
 
-    SetConsoleOutputCP(65001); // para permitir acentuação
+    retangulos(BLACK, 52, 24, 3, 50);
+    retangulos(WHITE, 51, 23, 3, 50);
 
-    retangulos(0, 52, 19, 3, 50);  // sombra do retângulo
-    retangulos(15, 51, 18, 3, 50); // retângulo branco
+    retangulos(BLACK, 52, 29, 3, 50);
+    retangulos(WHITE, 51, 28, 3, 50);
 
-    retangulos(0, 52, 24, 3, 50);
-    retangulos(15, 51, 23, 3, 50);
+    retangulos(BLACK, 52, 34, 3, 50);
+    retangulos(WHITE, 51, 33, 3, 50);
+}
 
-    retangulos(0, 52, 29, 3, 50);
-    retangulos(15, 51, 28, 3, 50);
+void interface_menu(int n)
+{
 
-    retangulos(0, 52, 34, 3, 50);
-    retangulos(15, 51, 33, 3, 50);
+    moldurinha(0, 155, 0, 39);
+
+    retangulos(BLACK, 52, 14, 3, 50);
+    retangulos(WHITE, 51, 13, 3, 50);
+
+    retangulos(BLACK, 52, 19, 3, 50);  // sombra do retângulo
+    retangulos(WHITE, 51, 18, 3, 50); // retângulo branco
+
+    retangulos(BLACK, 52, 24, 3, 50);
+    retangulos(n, 51, 23, 3, 50);
+
+    retangulos(BLACK, 52, 29, 3, 50);
+    retangulos(WHITE, 51, 28, 3, 50);
+
+    retangulos(BLACK, 52, 34, 3, 50);
+    retangulos(WHITE, 51, 33, 3, 50);
 }
 
 void retangulos(int color, int x, int y, int l, int c)
