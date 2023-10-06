@@ -1,5 +1,6 @@
-#ifndef MENU_SETAS_H_INCLUDED
-#define MENU_SETAS_H_INCLUDED
+#ifndef MENU_H_INCLUDED
+#define MENU_H_INCLUDED
+
 /// seta cima = 72
 /// direita = 77
 /// esqueda = 75
@@ -11,41 +12,38 @@
 #include "mensagens.h"
 #include "relatorio.h"
 
-int menu_setas_principal();
-int menu_principal(Usuario *usuario, Gastos *gastos);
+//int menu_setas_principal();
 
-int menu_principal(Usuario *usuario, Gastos *gastos)
+int menuPrincipal()
 {
     int escolha;
-    int quantidadeDeGastos = 0;
-    // escolha = menu_setas_principal();
 
-    while (true) // laço infinito
+    do
     {
-        cout << "Opcao 1 = atualizar usuario" << endl
-             << "Opcao 2 = mostrar usuario" << endl
-             << "Opcao 3 = cadastrar gastos" << endl
-             << "Opcao 4 = atualizar gastos" << endl
+        cout //<< "1- Ver Minha Carteirinha" << endl
+             << "2- Emitir Relatorio" << endl
+             //<< "3- Notificacoes" << endl
+             //<< "4- Meu Perfil" << endl
+             << "5- Sair do Programa" << endl
              << endl;
 
         cin >> escolha;
-        cin.ignore(); // remover o buffer do teclado
+        cin.ignore();
 
         system("CLS");
 
         switch (escolha)
         {
         case 1:
-            atualizarCadastro(usuario);
             break;
         case 2:
-            dadosUsuario(usuario);
+            emitirRelatorio();
             break;
         case 3:
-            quantidadeDeGastos = cadastrarGastos(gastos);
+
             break;
         case 4:
-            atualizarGastos(gastos, quantidadeDeGastos);
+
             break;
         case 5:
 
@@ -57,11 +55,10 @@ int menu_principal(Usuario *usuario, Gastos *gastos)
 
             break;
         }
-    }
-    // tela_final();
+    } while (escolha != 5 );
 }
 
-int menu_setas_principal()
+int menuSetasPrincipal()
 {
     interface_menu();
     perfumaria_menu_principal();
@@ -109,4 +106,4 @@ int menu_setas_principal()
     return enter;
 }
 
-#endif // MENU_SETAS_H_INCLUDED
+#endif 
