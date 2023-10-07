@@ -1,14 +1,6 @@
 #ifndef MENSAGENS_H_INCLUDED
 #define MENSAGENS_H_INCLUDED
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <ctime>
-#include <iomanip>
-
-using namespace std;
-
 struct Gasto {
     string categoria;
     double valor;
@@ -35,10 +27,11 @@ bool dataProxima(const string& dataVenc) {
 
 int notificacao() {
     ifstream arquivo("dados_financeiro.txt");
+    int n = 0;
 
-    if (!arquivo) {
+    if (!arquivo.is_open()) {
         cout << "Erro ao abrir o arquivo para leitura." << endl;
-        return 1;
+        return;
     }
 
     string linha;
@@ -49,20 +42,23 @@ int notificacao() {
             despesaAtual.categoria = linha.substr(11);
         }
         else if (linha.find("Valor: ") != string::npos) {
-            despesaAtual.valor = std::stod(linha.substr(7));
+            despesaAtual.valor = stod(linha.substr(7));
         }
         else if (linha.find("Data de Vencimento: ") != string::npos) {
             despesaAtual.dataVenc = linha.substr(21);
 
             if (dataProxima(despesaAtual.dataVenc)) {
                 cout << "Aviso: A data de vencimento para a categoria '" << despesaAtual.categoria
-                          << "' está próxima (" << despesaAtual.dataVenc << ")." << endl;
+                     << "' esta proxima (" << despesaAtual.dataVenc << ")." << endl << endl;
+                n++;
             }
         }
     }
 
     arquivo.close();
-    return 0;
+
+    return n;
 }
 
-#endif // MENSAGENS_H_INCLUDED
+#endif
+
