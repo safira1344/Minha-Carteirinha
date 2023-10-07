@@ -17,9 +17,9 @@ void salvarUsuario(Usuario *novoUsuario);
 Usuario importarUsuario();
 bool verificarSenha(const string &senhaDigitada, Usuario *dados);
 
-
 // Função main dessa biblioteca
-int cadastroOuLogin() {
+int cadastroOuLogin()
+{
     Usuario usuario;
 
     if (arquivoContemDados())
@@ -34,9 +34,9 @@ int cadastroOuLogin() {
     return 0;
 }
 
-
 // Função que loga o usuário
-void logarUsuario(Usuario *usuario){
+void logarUsuario(Usuario *usuario)
+{
     *usuario = importarUsuario();
 
     cout << "Ola, " << usuario->nome << "!" << endl;
@@ -59,30 +59,30 @@ void logarUsuario(Usuario *usuario){
         else
         {
             cout << "Senha incorreta!" << endl;
+            if (tentativas == 3)
+            {
+                cout << "Numero de tentativas excedido, conta bloqueada!" << endl;
+                cout << "Contate o administrador do sistema." << endl;
+
+                cout << "Deseja cadastrar um novo usuario? (S/N)" << endl;
+                cin >> opcao;
+
+                if (opcao == 'S' || opcao == 's')
+                {
+                    novoCadastro(usuario);
+                }
+                else
+                {
+                    cout << "Obrigado por usar o programa!" << endl;
+                    exit(0);
+                }
+                
+                break;
+            }
             cout << "Voce tem mais " << 3 - tentativas << " tentativas." << endl;
         }
 
         // Se o numero de tentativas for maior que 3 o usuário pode cadastrar um novo usuário ou sair do sistema
-        if (++tentativas == 3)
-        {
-            cout << "Numero de tentativas excedido, conta bloqueada!" << endl;
-            cout << "Contate o administrador do sistema." << endl;
-
-            cout << "Deseja cadastrar um novo usuario? (S/N)" << endl;
-            cin >> opcao;
-
-            if (opcao == 'S' || opcao == 's')
-            {
-                novoCadastro(usuario);
-            }
-            else
-            {
-                cout << "Obrigado por usar o programa!" << endl;
-                exit(0);
-            }
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        }
     }
 }
 
@@ -90,31 +90,31 @@ void logarUsuario(Usuario *usuario){
 void novoCadastro(Usuario *novoUsuario)
 {
     cabecalho();
-    gotoxy(50,16);
+    gotoxy(50, 16);
     cout << "Seja Bem Vindo, cadastre-se para usar a aplicacao!!!" << endl;
-    gotoxy(50,17);
+    gotoxy(50, 17);
     cout << "====================================================" << endl;
 
-    gotoxy(42,19);
+    gotoxy(42, 19);
     cout << "Digite seu nome de usuario: " << endl;
-    gotoxy(42,20);
+    gotoxy(42, 20);
     getline(cin, novoUsuario->nome);
 
-    gotoxy(42,22);
+    gotoxy(42, 22);
     cout << "Digite seu cpf: " << endl;
-    gotoxy(42,23);
+    gotoxy(42, 23);
     getline(cin, novoUsuario->cpf);
 
-    gotoxy(42,25);
+    gotoxy(42, 25);
     cout << "Digite sua senha de login: " << endl;
-    gotoxy(42,26);
+    gotoxy(42, 26);
     getline(cin, novoUsuario->senha);
 
     salvarUsuario(novoUsuario);
 
-    gotoxy(61,28);
+    gotoxy(61, 28);
     cout << "Usuario cadastrado com sucesso" << endl;
-    gotoxy(50,29);
+    gotoxy(50, 29);
     cout << "====================================================" << endl
          << endl;
 }
@@ -194,9 +194,9 @@ Usuario importarUsuario()
 }
 
 // Função que verifica se as senhas são iguais
-bool verificarSenha(const string &senhaDigitada,Usuario *dados)
+bool verificarSenha(const string &senhaDigitada, Usuario *dados)
 {
-     importarUsuario();
+    importarUsuario();
 
     return (senhaDigitada == dados->senha);
 }
