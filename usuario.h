@@ -59,7 +59,7 @@ void logarUsuario(Usuario *usuario)
         else
         {
             cout << "Senha incorreta!" << endl;
-            if (tentativas == 3)
+            if (++tentativas == 3)
             {
                 cout << "Numero de tentativas excedido, conta bloqueada!" << endl;
                 cout << "Contate o administrador do sistema." << endl;
@@ -76,8 +76,7 @@ void logarUsuario(Usuario *usuario)
                     cout << "Obrigado por usar o programa!" << endl;
                     exit(0);
                 }
-                
-                break;
+                return;
             }
             cout << "Voce tem mais " << 3 - tentativas << " tentativas." << endl;
         }
@@ -98,6 +97,7 @@ void novoCadastro(Usuario *novoUsuario)
     gotoxy(42, 19);
     cout << "Digite seu nome de usuario: " << endl;
     gotoxy(42, 20);
+    cin.ignore();
     getline(cin, novoUsuario->nome);
 
     gotoxy(42, 22);
