@@ -4,16 +4,18 @@
 #include <ctime>
 #include <windows.h>
 #include <stdio.h>
+#include <regex>
 
 #include "gconio.h"
-#include "interface.h"
-#include "usuario.h"
-#include "categoria.h"
-#include "renda.h"
-#include "cofrinho.h"
-#include "relatorio.h"
-#include "menu.h"
-
+#include "bibliotecas/mensagens.h"
+#include "bibliotecas/interface.h"
+#include "bibliotecas/usuario.h"
+#include "bibliotecas/despesas.h"
+#include "bibliotecas/renda.h"
+#include "bibliotecas/cofrinho.h"
+#include "bibliotecas/relatorio.h"
+#include "bibliotecas/menu.h"
+#include "bibliotecas/carteirinha.h"
 
 #define MAX_GASTOS 10
 
@@ -28,7 +30,7 @@ int main()
 {
     Usuario novoUsuario;
 
-    cadastrarUsuario(&novoUsuario);
+    cadastroOuLogin();
 
     if (!arquivoExiste("dados_financeiros.txt")) {
 
@@ -39,8 +41,6 @@ int main()
     }
 
     menuPrincipal();
-
-
+    
     return 0;
 }
-
