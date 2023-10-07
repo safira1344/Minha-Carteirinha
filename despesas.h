@@ -23,9 +23,8 @@ void entradaDeCategorias()
     string diretorioDadosDespesas = "dados_financeiros.txt";
     ofstream arquivo(diretorioDadosDespesas, ios::app);
 
-    cout << "Segundo Passo" << endl;
-    cout << "" << endl;
-    cout << "Vamos cadastrar suas despesas, por categorias (Moradia, Cartoes, Agua, Energia..." << endl;
+    gotoxy(34,17);
+    cout << "Segundo Passo - Vamos cadastrar suas despesas, por categorias (Moradia, Cartoes...)" ;
 
     const int maxDespesas = 100;
     Despesa **despesas = new Despesa *[maxDespesas]; // Vetor de ponteiros para Despesa
@@ -41,13 +40,19 @@ void entradaDeCategorias()
 
         arquivo << "Mes de Cadastro: " << despesas[numDespesas]->mesCadastro << endl;
 
-        cout << "" << endl;
+        gotoxy(42,19);
         cout << "Digite a categoria da despesa: ";
+        gotoxy(42,20);
         cin.ignore();
         getline(cin, despesas[numDespesas]->categoria);
 
+        gotoxy(42,21);
         cout << "Digite o valor da despesa: R$ ";
-        cin >> despesas[numDespesas]->valor;
+        gotoxy(42,22);
+        cout<<"R$ ";
+        gotoxy(45,22);
+        cin >> despesas[numDespesas]->valor
+        
 
         despesas[numDespesas]->dataVencimento = solicitarDataVencimento();
 
@@ -68,9 +73,10 @@ void entradaDeCategorias()
 
         arquivo << endl;
 
-        cout << "" << endl;
+        gotoxy(42,28);
         cout << "Despesa registrada com sucesso!" << endl << endl;
 
+        gotoxy(42,29);
         cout << "Deseja adicionar outra despesa? (S/N): ";
         cin >> opcao;
         if (!(opcao == 'S' || opcao == 's'))
