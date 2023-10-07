@@ -1,16 +1,35 @@
 #ifndef INTERFACE_H_INCLUDED
 #define INTERFACE_H_INCLUDED
 
-void moldurinha(int l, int m, int x, int y);
+void moldurinha(int l, int m, int x, int y, int colorFundo, int colorMoldura);
 void retangulos(int color, int x, int y, int l, int c);
+void tela_incial();
 
 using namespace std;
+
+void cabecalho()
+{
+    moldurinha(0,155,0,39,MAGENTA,WHITE);
+
+    moldurinha(30,120,8,30,WHITE, BLACK);
+
+    gotoxy(55, 10);
+    cout<<"   ___          _           _   ";
+    gotoxy(55, 11);
+    cout<<"  / __\\__ _  __| | __ _ ___| |_ _ __ ___ ";
+    gotoxy(55, 12);
+    cout<<" / /  / _` |/ _` |/ _` / __| __| '__/ _ \\ ";
+    gotoxy(55, 13);
+    cout<<"/ /__| (_| | (_| | (_| \__ \\  |_| | | (_) |";
+    gotoxy(55, 14);
+    cout<<"\\____/\\__,_|\\__,_|\__,_|___/\\___|_|  \\___/";
+}
 
 void tela_incial()
 {
     textbackground(MAGENTA);
     system("cls");
-    moldurinha(0,155,0,39);
+    moldurinha(0,155,0,39, MAGENTA, WHITE);
 
     gotoxy(45,9);
     cout <<" _           _  _  _  _  _           _  _           _        _  ";
@@ -135,7 +154,7 @@ void perfumariaMenuCarteirinha()
 
 void interfaceMenuSecundario()
 {
-    moldurinha(0, 155, 0, 39);
+    moldurinha(0, 155, 0, 39, MAGENTA, WHITE);
 
     retangulos(BLACK, 52, 24, 3, 50);
     retangulos(WHITE, 51, 23, 3, 50);
@@ -150,7 +169,7 @@ void interfaceMenuSecundario()
 void interface_menu(int n)
 {
 
-    moldurinha(0, 155, 0, 39);
+    moldurinha(0, 155, 0, 39, MAGENTA, WHITE);
 
     retangulos(BLACK, 52, 14, 3, 50);
     retangulos(WHITE, 51, 13, 3, 50);
@@ -182,19 +201,19 @@ void retangulos(int color, int x, int y, int l, int c)
     }
 }
 
-void moldurinha(int l, int m, int x, int y)
+void moldurinha(int l, int m, int x, int y, int colorFundo, int colorMoldura)
 {
     // Configura o console para modo de saída de caractere estendido
     SetConsoleOutputCP(437);
     int i, j;
-    textbackground(MAGENTA);
+    textbackground(colorFundo);
     for (i = x + 1; i < y; i++)
     {
         gotoxy(l + 1, i);
         for (j = l + 1; j < m; j++)
             cout << " ";
     }
-    textcolor(WHITE);
+    textcolor(colorMoldura);
     gotoxy(l, x);
     cout << char(201); // caracter ╔
     gotoxy(m, x);
