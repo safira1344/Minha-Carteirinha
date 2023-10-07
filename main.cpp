@@ -37,7 +37,7 @@ int main()
 
         entradaDeRenda();
         entradaDeCategorias();
-        entradaDeCofrinho();
+//        entradaDeCofrinho();
 
     }
 
