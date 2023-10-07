@@ -1,12 +1,6 @@
 #ifndef USUARIO_H_INCLUDED
 #define USUARIO_H_INCLUDED
 
-#include <iostream>
-#include <fstream>
-#include <string>
-
-using namespace std;
-
 struct Usuario
 {
     string nome;
@@ -15,28 +9,37 @@ struct Usuario
 };
 
 // Assinatura das funções
-bool existeUsuarioCadastrado();
 void logarUsuario(Usuario *usuario);
-void cadastrarUsuario(Usuario *novoUsuario);
+void novoCadastro(Usuario *novoUsuario);
 void dadosUsuario(Usuario *novoUsuario);
 bool arquivoContemDados();
 void salvarUsuario(Usuario *novoUsuario);
 Usuario importarUsuario();
-bool verificarSenha(const string &senhaDigitada);
+bool verificarSenha(const string &senhaDigitada,Usuario *dados);
 
 
-// Função que verifica se existe usuário cadastrado
-bool existeUsuarioCadastrado()
-{
-    return arquivoContemDados();
+// Função main dessa biblioteca
+int cadastroOuLogin() {
+    Usuario usuario;
+
+    if (arquivoContemDados())
+    {
+        logarUsuario(&usuario);
+    }
+    else
+    {
+        novoCadastro(&usuario);
+    }
+
+    return 0;
 }
 
-// Função que loga o usuário
-void logarUsuario(Usuario *usuario)
-{
-    Usuario usuarioSalvo = importarUsuario();
 
-    cout << "Ola, " << usuarioSalvo.nome << "!" << endl;
+// Função que loga o usuário
+void logarUsuario(Usuario *usuario){
+    *usuario = importarUsuario();
+
+    cout << "Ola, " << usuario->nome << "!" << endl;
     cout << "====================================================" << endl;
 
     int tentativas = 0;
@@ -48,7 +51,7 @@ void logarUsuario(Usuario *usuario)
         cout << "Digite sua senha de login: " << endl;
         getline(cin, senhaDigitada);
 
-        if (verificarSenha(senhaDigitada)) // Se a senha estiver correta o usuário é logado
+        if (verificarSenha(senhaDigitada, usuario))
         {
             cout << "Senha correta!" << endl;
             break;
@@ -59,7 +62,8 @@ void logarUsuario(Usuario *usuario)
             cout << "Voce tem mais " << 3 - tentativas << " tentativas." << endl;
         }
 
-        if (++tentativas == 3) // Se o numero de tentativas for maior que 3 o usuário pode cadastrar um novo usuário ou sair do sistema
+        // Se o numero de tentativas for maior que 3 o usuário pode cadastrar um novo usuário ou sair do sistema
+        if (++tentativas == 3)
         {
             cout << "Numero de tentativas excedido, conta bloqueada!" << endl;
             cout << "Contate o administrador do sistema." << endl;
@@ -69,21 +73,21 @@ void logarUsuario(Usuario *usuario)
 
             if (opcao == 'S' || opcao == 's')
             {
-                cadastrarUsuario(usuario);
+                novoCadastro(usuario);
             }
             else
             {
-                cout << "Obrigado por usar o sistema!" << endl;
+                cout << "Obrigado por usar o programa!" << endl;
                 exit(0);
             }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         }
     }
-
-    cout << "Ola, " << usuarioSalvo.nome << "!" << endl;
 }
 
-// Função que cadastra o usuário
-void cadastrarUsuario(Usuario *novoUsuario)
+// Função para cadastrar usuario no sistema
+void novoCadastro(Usuario *novoUsuario)
 {
     cout << "Seja Bem Vindo, cadastre-se para usar a aplicacao!!!" << endl;
     cout << "====================================================" << endl;
@@ -159,7 +163,7 @@ Usuario importarUsuario()
     if (!arquivo.is_open())
     {
         cout << "Erro ao abrir o arquivo para leitura." << endl;
-        return novoUsuario; // Retornando um usuario vazio
+        return novoUsuario;
     }
 
     string linha;
@@ -179,11 +183,11 @@ Usuario importarUsuario()
 }
 
 // Função que verifica se as senhas são iguais
-bool verificarSenha(const string &senhaDigitada)
+bool verificarSenha(const string &senhaDigitada,Usuario *dados)
 {
-    Usuario usuarioSalvo = importarUsuario();
+     importarUsuario();
 
-    return (senhaDigitada == usuarioSalvo.senha);
+    return (senhaDigitada == dados->senha);
 }
 
-#endif // USUARIO_H_INCLUDED
+#endif
