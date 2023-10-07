@@ -1,77 +1,73 @@
 #ifndef RENDA_H_INCLUDED
 #define RENDA_H_INCLUDED
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <ctime>
-
-using namespace std;
-
-struct Renda {
+struct Renda
+{
     string nome;
     double valor;
 };
 
-Renda* criarRenda() {
-    Renda* novaRenda = new Renda;
+// Assinatura das funções
+void solicitarRenda(Renda *renda);
+
+Renda *criarRenda()
+{
+    Renda *novaRenda = new Renda;
     novaRenda->valor = 0.0;
     return novaRenda;
 }
 
-void solicitarRenda(Renda* renda) {
-    ofstream arquivo("dados_renda.txt", ios::app);
-
-    cout << "Insira de onde vem a renda: ";
-    cin.ignore();
-    getline(cin, renda->nome);
-    cout << "Informe o valor da renda mensal de " << renda->nome << ": R$ ";
-    cin >> renda->valor;
-
-    time_t now = time(0);
-    tm* ltm = localtime(&now);
-
-    char buffer[8];
-    strftime(buffer, sizeof(buffer), "%m-%Y", ltm);
-
-    string mesCadastro = string(buffer);
-
-
-    if (arquivo.is_open()) {
-        arquivo << "Mês de Cadastro: " << mesCadastro << endl;
-        arquivo << "Renda proveniente de: " << renda->nome << endl;
-        arquivo << "Valor: R$ " << renda->valor << endl;
-        arquivo << endl;
-
-        arquivo.close();
-
-        cout << "Renda de " << renda->nome << " salva com sucesso!!!" << endl << endl;
-    } else {
-        cout << "Erro ao abrir o arquivo para salvamento" << endl;
-    }
-}
-
-void exibirRenda(const Renda* renda) {
-    cout << "Renda de " << renda->nome << ": R$ " << renda->valor << endl;
-}
-
-// Função main
+// Funcao main dessa biblioteca
 void entradaDeRenda() {
     cout << "Bem-vindo a sua CARTEIRINHA!" << endl << endl;
-    cout << "Primeiro passo - Vamos cadastrar sua renda..." << endl<< endl;
 
+    cout << "Primeiro passo - Vamos cadastrar sua renda..." << endl;
 
     char opcao;
-    do {
-        Renda* renda = criarRenda();
+
+    do
+    {
+        Renda *renda = criarRenda();
+
         solicitarRenda(renda);
+
         delete renda;
 
         cout << "Deseja adicionar outra renda? (S/N): ";
         cin >> opcao;
+
     } while (opcao == 'S' || opcao == 's');
+}
+
+void solicitarRenda(Renda *renda) {
+    ofstream arquivo("dados_renda.txt", ios::app);
+
+    cin.ignore();
+    cout << "" <<endl;
+    cout << "Informe de onde vem a renda: ";
+    getline(cin, renda->nome);
+
+    cout << "Insira o valor da renda mensal de " << renda->nome << ": R$ ";
+    cin >> renda->valor;
+
+    string mesCadastro = obterMesAtual();
+
+    if (!arquivo.is_open())
+    {
+        cout << "Erro ao abrir o arquivo para salvamento" << endl;
+        return;
+    }
+
+    arquivo << "Mes de Cadastro: " << mesCadastro << endl
+            << "Nome: " << renda->nome << endl
+            << "Valor: R$ " << renda->valor << endl
+            << endl;
+
+    arquivo.close();
 
     cout << "" << endl;
+    cout << "Renda de " << renda->nome << " salva com sucesso!!!" << endl;
 }
+
 
 #endif
