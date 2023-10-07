@@ -121,8 +121,11 @@ double solicitarTeto()
 {
     string tetoDeGasto;
     char escolha;
-
+    
+    gotoxy(42,25);
     cout << "Deseja digitar o teto de gasto? (S/N): ";
+    fflush(stdin);
+    gotoxy(42,26);
     cin >> escolha;
 
     if (!(escolha == 'S' || escolha == 's'))
@@ -130,7 +133,11 @@ double solicitarTeto()
         return 0.0;
     }
 
-    cout << "Digite o teto de gasto (ou deixe em branco): R$ ";
+    gotoxy(42,26);
+    cout << "Digite o teto de gasto (ou deixe em branco): ";
+    gotoxy(42,27);
+    cout << "R$ ";
+    gotoxy(45,27);
     cin.ignore();
     getline(cin, tetoDeGasto);
 
@@ -148,7 +155,9 @@ string solicitarDataVencimento()
     string data;
 
     char escolha;
+    gotoxy(42,23);
     cout << "Deseja digitar a data de vencimento? (S/N): ";
+    gotoxy(42,24);
     cin >> escolha;
 
     if (!(escolha == 'S' || escolha == 's'))
@@ -158,8 +167,12 @@ string solicitarDataVencimento()
 
     do
     {
-        cout << "Digite uma data valida de vencimento da despesa (dd-mm-aaaa): ";
-        cin >> data;
+            gotoxy(42,24);
+            cout<<"                                                                 ";
+            gotoxy(42,23);
+            cout << "Digite uma data válida de vencimento da despesa (dd-mm-aaaa): ";
+            gotoxy(42,24);
+            cin >> data;
     } while (!validarData(data));
 
     return data;
