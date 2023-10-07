@@ -51,7 +51,7 @@ void entradaDeCategorias()
         gotoxy(42,22);
         cout<<"R$ ";
         gotoxy(45,22);
-        cin >> despesas[numDespesas]->valor
+        cin >> despesas[numDespesas]->valor;
         
 
         despesas[numDespesas]->dataVencimento = solicitarDataVencimento();

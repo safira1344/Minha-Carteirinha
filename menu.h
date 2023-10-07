@@ -7,20 +7,21 @@
 /// baixo = 80
 /// ESC   = 27
 
-int menuSetasSecundario(int identificaMenu );
+int menuSetasSecundario(int identificaMenu);
 int menuSetasPrincipal(int cor);
 
-void menuCarteirinha
+void menuCarteirinha()
 {
+
     int op;
     do
     {
         op = menuSetasSecundario(1);
         case 1:
-            //Aqui chama a função de editar dados;
+            
             break;
         case 2:
-            //Aqui chama a função de adicionar dados;
+            //atualizarDadosCarteirinha();
             break;
     }while(op!=3);
 }

@@ -1,6 +1,7 @@
 #ifndef MENSAGENS_H_INCLUDED
 #define MENSAGENS_H_INCLUDED
 
+
 struct Gasto {
     string categoria;
     double valor;
@@ -31,7 +32,7 @@ int notificacao() {
 
     if (!arquivo.is_open()) {
         cout << "Erro ao abrir o arquivo para leitura." << endl;
-        return;
+        exit (1);
     }
 
     string linha;

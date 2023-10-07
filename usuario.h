@@ -15,7 +15,7 @@ void dadosUsuario(Usuario *novoUsuario);
 bool arquivoContemDados();
 void salvarUsuario(Usuario *novoUsuario);
 Usuario importarUsuario();
-bool verificarSenha(const string &senhaDigitada,Usuario *dados);
+bool verificarSenha(const string &senhaDigitada, Usuario *dados);
 
 
 // Função main dessa biblioteca
@@ -201,13 +201,4 @@ bool verificarSenha(const string &senhaDigitada,Usuario *dados)
     return (senhaDigitada == dados->senha);
 }
 
-#endif#ifndef USUARIO_H_INCLUDED
-#define USUARIO_H_INCLUDED
-
-struct Usuario
-{
-    string nome;
-    string cpf;
-    string senha;
-};
-
+#endif

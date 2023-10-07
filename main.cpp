@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <string.h>
 #include <ctime>
@@ -6,20 +7,20 @@
 #include <stdio.h>
 #include <regex>
 
+using namespace std;
 #include "gconio.h"
-#include "bibliotecas/mensagens.h"
-#include "bibliotecas/interface.h"
-#include "bibliotecas/usuario.h"
-#include "bibliotecas/despesas.h"
-#include "bibliotecas/renda.h"
-#include "bibliotecas/cofrinho.h"
-#include "bibliotecas/relatorio.h"
-#include "bibliotecas/menu.h"
-#include "bibliotecas/carteirinha.h"
+#include "mensagens.h"
+#include "interface.h"
+#include "usuario.h"
+#include "despesas.h"
+#include "renda.h"
+#include "cofrinho.h"
+#include "relatorio.h"
+#include "menu.h"
+#include "carteirinha.h"
 
 #define MAX_GASTOS 10
 
-using namespace std;
 
 bool arquivoExiste(const string& arquivoDados) {
     ifstream arquivo(arquivoDados);

@@ -2,3 +2,6 @@ bin
 obj
 .vscode
 *.exe
+.idea/
+CMakeLists.txt
+cmake-build-debug/
