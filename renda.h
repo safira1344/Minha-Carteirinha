@@ -20,8 +20,9 @@ Renda *criarRenda()
 // Funcao main dessa biblioteca
 void entradaDeRenda()
 {
-    cout << "Bem-vindo a sua CARTEIRINHA!" << endl
-         << endl;
+    gotoxy(60,16);
+    cout << "Bem-vindo a sua CARTEIRINHA!" ;
+    gotoxy(51,17);
     cout << "Primeiro passo - Vamos cadastrar sua renda..." << endl;
 
     char opcao;
@@ -33,8 +34,10 @@ void entradaDeRenda()
         solicitarRenda(renda);
 
         delete renda;
-
+        
+        gotoxy(57,27);
         cout << "Deseja adicionar outra renda? (S/N): ";
+        gotoxy(57,28);
         cin >> opcao;
 
     } while (opcao == 'S' || opcao == 's');
@@ -43,13 +46,18 @@ void entradaDeRenda()
 void solicitarRenda(Renda *renda)
 {
     ofstream arquivo("dados_renda.txt", ios::app);
-
-    cout << endl
-         << "Informe de onde vem a renda: ";
+    
+    gotoxy(42,19);
+    cout << "Informe de onde vem a renda: ";
+    gotoxy(42,20);
     cin.ignore();
     getline(cin, renda->nome);
 
-    cout << "Insira o valor da renda mensal de " << renda->nome << ": R$ ";
+    gotoxy(42,22);
+    cout << "Informe o valor da renda mensal de " << renda->nome << ": " ;
+    gotoxy(42,23);
+    cout << "R$ ";
+    gotoxy(45,23);
     cin >> renda->valor;
 
     string mesCadastro = obterMesAtual();
