@@ -31,6 +31,8 @@ int main()
 {
     Usuario novoUsuario;
 
+    tela_incial();
+    confirmar();
     cadastroOuLogin();
 
     if (!arquivoExiste("dados_financeiros.txt"))
@@ -38,7 +40,7 @@ int main()
 
         entradaDeRenda();
         entradaDeCategorias();
-        //        entradaDeCofrinho();
+        guardarDinheiro();
     }
 
     menuPrincipal();
