@@ -39,7 +39,7 @@ void menuCarteirinha()
     int op;
     do
     {
-        op = menuSetasSecundario(true);
+        op = menuSetasSecundario();
         switch (op)
         {
         case 1:
@@ -104,11 +104,14 @@ int menuSetasPrincipal(int cor)
         {
         case 13:
             return enter;
+            break;
         case 80:
             if (linha < 34)
             {
                 linha += 5;
-                if (linha == 24 && cor == RED)
+                enter++;
+
+                if(linha == 14 && cor == RED)
                 {
                     retangulos(MAGENTA, 52, linha, 3, 50);
                     retangulos(RED, 51, linha - 1, 3, 50);
@@ -119,7 +122,7 @@ int menuSetasPrincipal(int cor)
                     retangulos(WHITE, 51, linha - 1, 3, 50);
                 }
 
-                if (aux == 24 && cor == RED)
+                if(aux == 14 && cor == RED)
                 {
                     retangulos(0, 52, aux, 3, 50);
                     retangulos(RED, 51, aux - 1, 3, 50);
@@ -129,14 +132,14 @@ int menuSetasPrincipal(int cor)
                     retangulos(0, 52, aux, 3, 50);
                     retangulos(WHITE, 51, aux - 1, 3, 50);
                 }
-                enter++;
             }
             break;
         case 72:
-            if (linha > 14)
+            if (linha > 4)
             {
                 linha -= 5;
-                if (linha == 24 && cor == RED)
+                enter--;
+                if(linha == 14 && cor == RED)
                 {
                     retangulos(MAGENTA, 52, linha, 3, 50);
                     retangulos(RED, 51, linha - 1, 3, 50);
@@ -146,7 +149,7 @@ int menuSetasPrincipal(int cor)
                     retangulos(MAGENTA, 52, linha, 3, 50);
                     retangulos(WHITE, 51, linha - 1, 3, 50);
                 }
-                if (aux == 24 && cor == RED)
+                if(aux == 14 && cor == RED)
                 {
                     retangulos(0, 52, aux, 3, 50);
                     retangulos(RED, 51, aux - 1, 3, 50);
@@ -157,15 +160,16 @@ int menuSetasPrincipal(int cor)
                     retangulos(WHITE, 51, aux - 1, 3, 50);
                 }
 
-                enter--;
             }
             break;
         }
         perfumaria_menu_principal(cor);
         aux = linha;
-    } while (escolha != 27);
-    enter = 4;
+    }
+    while (escolha != 27);
+    enter = 5;
     return enter;
+    
 }
 
 int menuSetasSecundario(bool identificaMenu)
