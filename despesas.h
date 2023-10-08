@@ -16,7 +16,7 @@ bool validarData(const string &data);
 double solicitarTeto();
 string solicitarDataVencimento();
 void entradaDeCategorias();
-void editarCategoria(Despesa *despesa);
+double extrairDespesas(string &arquivoDespesa, string &data);
 
 // Funcao main
 void entradaDeCategorias()
@@ -177,6 +177,51 @@ string solicitarDataVencimento()
     } while (!validarData(data));
 
     return data;
+}
+
+// Função que importa o nome e valor das despesas, e faz a soma delas
+double extrairDespesas(string &arquivoDespesa, string &data)
+{
+    ifstream arquivo(arquivoDespesa);
+
+    if (!arquivo.is_open())
+    {
+        cout << "Erro ao abrir o arquivo de despesas." << endl;
+        return 0.0;
+    }
+
+    double totalDespesasMes = 0.0;
+    string linha;
+
+    cout << "DESPESAS" << endl;
+
+    while (getline(arquivo, linha))
+    {
+        if (linha.find("Mes de Cadastro: " + data) != string::npos)
+        {
+            string categoriaDespesa;
+            double valorDespesa = 0.0;
+
+            while (getline(arquivo, linha) && !linha.empty())
+            {
+                if (linha.find("Categoria: ") != string::npos)
+                {
+                    categoriaDespesa = linha.substr(linha.find("Categoria: ") + 11);
+                }
+                else if (linha.find("Valor: ") != string::npos)
+                {
+                    valorDespesa = stod(linha.substr(linha.find("Valor: ") + 7));
+                }
+            }
+
+            cout << "- Despesa: " << categoriaDespesa << " - " << valorDespesa << endl;
+            totalDespesasMes += valorDespesa;
+        }
+    }
+
+    arquivo.close();
+
+ return totalDespesasMes;
 }
 
 #endif
