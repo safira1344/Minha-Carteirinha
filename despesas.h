@@ -20,6 +20,7 @@ bool validarData(const string &data);
 string solicitarDataVencimento();
 void entradaDeCategorias();
 double extrairDespesas(string &arquivoDespesa, string &data);
+int tetoDeGastos();
 
 // Funcao main
 void entradaDeCategorias()
@@ -83,6 +84,7 @@ void entradaDeCategorias()
     }
 
     arquivo.close();
+    tetoDeGastos();
 }
 
 //Função que salva o teto de gastos

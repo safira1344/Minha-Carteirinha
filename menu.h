@@ -44,9 +44,12 @@ void menuCarteirinha()
         switch (op)
         {
         case 1:
-            // adicionarGastosDiarios();
+            desepesaDiaria();
             break;
         case 2:
+            imprimirDespesasDiarias();
+            break;
+        case 3:
             menuPrincipal();
         }
     } while (op != 3);
