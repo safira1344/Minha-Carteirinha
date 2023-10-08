@@ -39,7 +39,7 @@ void menuCarteirinha()
     int op;
     do
     {
-        op = menuSetasSecundario();
+        op = menuSetasSecundario(1);
         switch (op)
         {
         case 1:
@@ -66,7 +66,6 @@ void menuPrincipal()
         {
         case 1:
             menuCarteirinha();
-            // menuSetasSecundario(true);
             break;
         case 2:
             emitirRelatorio();
@@ -76,7 +75,6 @@ void menuPrincipal()
             break;
         case 4:
             menuPerfil();
-            // menuSetasSecundario(false);
             break;
         case 5:
             calcularEmprestimo();
