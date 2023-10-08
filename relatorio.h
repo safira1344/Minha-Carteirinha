@@ -41,13 +41,13 @@ void emitirRelatorio()
     cout << "RENDA" << endl;
     cout << "- Renda Total de " << mesExtenso << ": " << totalRendas << endl
          << endl;
-    
+
     extrairDespesas(arquivoDespesa, data);
 
     cout << "" << endl;
     cout << "Despesa total em " << mesExtenso << ": " << despesaTotal << endl
          << endl;
-    
+
     extrairCofrinho(arquivoCofre, data);
 
     cout << "" << endl;

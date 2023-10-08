@@ -221,7 +221,7 @@ double extrairDespesas(string &arquivoDespesa, string &data)
 
     arquivo.close();
 
- return totalDespesasMes;
+    return totalDespesasMes;
 }
 
 #endif

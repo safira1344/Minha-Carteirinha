@@ -120,7 +120,8 @@ void novoCadastro(Usuario *novoUsuario)
          << endl;
 }
 
-void editarUsuario(Usuario *usuario) {
+void editarUsuario(Usuario *usuario)
+{
     cabecalho();
     gotoxy(50, 16);
     cout << "Seja Bem Vindo, cadastre-se para usar a aplicacao!!!" << endl;
@@ -147,7 +148,8 @@ void editarUsuario(Usuario *usuario) {
          << endl;
 }
 
-void apagarUsuario(Usuario *novoUsuario){
+void apagarUsuario(Usuario *novoUsuario)
+{
     novoCadastro(novoUsuario);
 }
 // Função que mostra os dados do usuário
@@ -231,7 +233,5 @@ bool verificarSenha(const string &senhaDigitada, Usuario *dados)
 
     return (senhaDigitada == dados->senha);
 }
-
-
 
 #endif

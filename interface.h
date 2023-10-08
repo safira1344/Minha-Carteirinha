@@ -85,7 +85,7 @@ void confirmar()
 
 void perfumaria_menu_principal(int cor) // tururu
 {
-     SetConsoleOutputCP(65001); // para permitir acentuação
+    SetConsoleOutputCP(65001); // para permitir acentuação
 
     gotoxy(66, 4);
     textbackground(WHITE);
@@ -107,7 +107,6 @@ void perfumaria_menu_principal(int cor) // tururu
     textcolor(BLACK);
     cout << "MEU PERFIL";
 
-
     gotoxy(71, 24);
     textbackground(WHITE);
     textcolor(BLACK);
@@ -117,7 +116,6 @@ void perfumaria_menu_principal(int cor) // tururu
     textbackground(WHITE);
     textcolor(BLACK);
     cout << "PREVER TEMPO";
-
 
     gotoxy(74, 34);
     textbackground(WHITE);
@@ -180,7 +178,7 @@ void interface_menu(int n)
     retangulos(BLACK, 52, 4, 3, 50);
     retangulos(WHITE, 51, 3, 3, 50);
 
-    retangulos(BLACK, 52, 9, 3, 50);  // sombra do retângulo
+    retangulos(BLACK, 52, 9, 3, 50); // sombra do retângulo
     retangulos(WHITE, 51, 8, 3, 50); // retângulo branco
 
     retangulos(BLACK, 52, 14, 3, 50);

@@ -62,9 +62,9 @@ void guardarDinheiro()
     }
 }
 
-
 // Função que importa o nome e valor dos cofres, e faz a soma deles
-double extrairCofrinho(string &arquivoCofre, string &data){
+double extrairCofrinho(string &arquivoCofre, string &data)
+{
     double valorCofre;
 
     ifstream arquivo(arquivoCofre);

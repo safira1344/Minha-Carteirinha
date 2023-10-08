@@ -9,8 +9,8 @@ struct Renda
 
 // Assinatura das funções
 void solicitarRenda(Renda *renda);
-void somarRenda(string &arquivoRenda, string &data, string &mesExtenso);
-void importarRenda(string &arquivoRenda, string &data, string &mesExtenso);
+double somarRenda(string &arquivoRenda, string &data);
+void importarRenda(string &arquivoRenda, string &data);
 
 Renda *criarRenda()
 {
@@ -22,9 +22,9 @@ Renda *criarRenda()
 // Funcao main dessa biblioteca
 void entradaDeRenda()
 {
-    gotoxy(60,16);
-    cout << "Bem-vindo a sua CARTEIRINHA!" ;
-    gotoxy(51,17);
+    gotoxy(60, 16);
+    cout << "Bem-vindo a sua CARTEIRINHA!";
+    gotoxy(51, 17);
     cout << "Primeiro passo - Vamos cadastrar sua renda..." << endl;
 
     char opcao;
@@ -36,10 +36,10 @@ void entradaDeRenda()
         solicitarRenda(renda);
 
         delete renda;
-        
-        gotoxy(57,27);
+
+        gotoxy(57, 27);
         cout << "Deseja adicionar outra renda? (S/N): ";
-        gotoxy(57,28);
+        gotoxy(57, 28);
         cin >> opcao;
 
     } while (opcao == 'S' || opcao == 's');
@@ -48,18 +48,18 @@ void entradaDeRenda()
 void solicitarRenda(Renda *renda)
 {
     ofstream arquivo("dados_renda.txt", ios::app);
-    
-    gotoxy(42,19);
+
+    gotoxy(42, 19);
     cout << "Informe de onde vem a renda: ";
-    gotoxy(42,20);
+    gotoxy(42, 20);
     cin.ignore();
     getline(cin, renda->nome);
 
-    gotoxy(42,22);
-    cout << "Informe o valor da renda mensal de " << renda->nome << ": " ;
-    gotoxy(42,23);
+    gotoxy(42, 22);
+    cout << "Informe o valor da renda mensal de " << renda->nome << ": ";
+    gotoxy(42, 23);
     cout << "R$ ";
-    gotoxy(45,23);
+    gotoxy(45, 23);
     cin >> renda->valor;
 
     string mesCadastro = obterMesAtual();
@@ -81,9 +81,8 @@ void solicitarRenda(Renda *renda)
     cout << "Renda de " << renda->nome << " salva com sucesso!!!" << endl;
 }
 
-
 // Função que soma todas as rendas de dentro do arquivo de renda
-double somarRenda(string &arquivoRenda, string &data, string &mesExtenso)
+double somarRenda(string &arquivoRenda, string &data)
 {
     ifstream arquivo(arquivoRenda);
 
