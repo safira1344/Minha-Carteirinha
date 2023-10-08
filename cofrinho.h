@@ -2,6 +2,7 @@
 #define COFRINHO_H_INCLUDED
 
 // Assinatura das funções
+double extrairCofrinho(string &arquivoCofre, string &data);
 double calcularEmprestimo();
 void preverTempo();
 
@@ -59,6 +60,53 @@ void guardarDinheiro()
         cout << "Deseja guardar mais dinheiro? (S/N): ";
         cin >> opcao;
     }
+}
+
+
+// Função que importa o nome e valor dos cofres, e faz a soma deles
+double extrairCofrinho(string &arquivoCofre, string &data){
+    double valorCofre;
+
+    ifstream arquivo(arquivoCofre);
+
+    if (!arquivo.is_open())
+    {
+        cout << "Erro ao abrir o arquivo do cofre." << endl;
+        return 0.0;
+    }
+
+    double totalGuardado = 0.0;
+    string linha;
+
+    cout << "DINHEIRO GUARDADO" << endl;
+
+    while (getline(arquivo, linha))
+    {
+        if (linha.find("Mes de Cadastro: " + data) != string::npos)
+        {
+            string nomeCofre;
+            valorCofre = 0.0;
+
+            while (getline(arquivo, linha) && !linha.empty())
+            {
+                if (linha.find("Nome: ") != string::npos)
+                {
+                    nomeCofre = linha.substr(linha.find("Nome: ") + 6);
+                }
+                else if (linha.find("Valor: ") != string::npos)
+                {
+                    valorCofre = stod(linha.substr(linha.find("Valor: ") + 7));
+                }
+            }
+
+            cout << "- Cofre: " << nomeCofre << " - " << valorCofre << endl;
+            totalGuardado += valorCofre;
+        }
+    }
+
+    arquivo.close();
+
+    return valorCofre;
 }
 
 // Função  para prever em quanto tempo o usuário terá uma certa quantidade de dinheiro
