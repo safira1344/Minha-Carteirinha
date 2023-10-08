@@ -17,7 +17,6 @@ void salvarUsuario(Usuario *novoUsuario);
 Usuario importarUsuario();
 bool verificarSenha(const string &senhaDigitada, Usuario *dados);
 void editarUsuario(Usuario *usuario);
-void apagarCadastro();
 
 // Função main dessa biblioteca
 int cadastroOuLogin()
@@ -233,17 +232,6 @@ bool verificarSenha(const string &senhaDigitada, Usuario *dados)
     return (senhaDigitada == dados->senha);
 }
 
-void apagarCadastro()//Para apagar os arquivos com dados dos usuários
-{
-    string usuario = "dados_usuario.txt";
-    string renda = "dados_renda.txt";
-    string financeiro = "dados_financeiros.txt";
-    string cofrinho = "dados_cofre.txt";
 
-    if (remove(usuario.c_str())==0 && remove(renda.c_str())==0 && remove(financeiro.c_str())==0 && remove(cofrinho.c_str())==0)
-    {
-        cout << "Arquivos apagados com sucesso!";
-    }
-}
 
 #endif
