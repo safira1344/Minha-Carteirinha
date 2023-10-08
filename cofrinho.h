@@ -8,33 +8,36 @@ void preverTempo();
 // Funcao main dessa biblioteca
 void guardarDinheiro()
 {
-    char opcao;
-    retangulos(WHITE,32,17,13,88);
-    gotoxy(67,17);
-    cout << "E pra finalizar..." << endl << endl;
-    gotoxy(58,18);
+    retangulos(WHITE, 32, 17, 13, 88);
+    gotoxy(67, 17);
+    cout << "E pra finalizar..." << endl
+         << endl;
+    gotoxy(58, 18);
+
     cout << "Deseja guardar dinheiro? (S/N): ";
+    char opcao;
     cin >> opcao;
 
     while (opcao == 'S' || opcao == 's')
     {
-        retangulos(WHITE,32,17,13,88);
+        retangulos(WHITE, 32, 17, 13, 88);
         string nomeCofrinho;
-        gotoxy(42,19);
+        gotoxy(42, 19);
         cout << "Informe o nome do cofrinho: ";
-        gotoxy(42,20);
-        cin >> nomeCofrinho;gotoxy(42,19);
+        gotoxy(42, 20);
+        cin >> nomeCofrinho;
+        gotoxy(42, 19);
         cout << "Informe o nome do cofrinho: ";
-        gotoxy(42,20);
+        gotoxy(42, 20);
         cin >> nomeCofrinho;
 
         double quantidadeDinheiro;
 
-        gotoxy(42,22);
+        gotoxy(42, 22);
         cout << "Informe a quantidade de dinheiro que deseja guardar:";
-        gotoxy(42,23);
-        cout <<"R$ ";
-        gotoxy(45,23);
+        gotoxy(42, 23);
+        cout << "R$ ";
+        gotoxy(45, 23);
         cin >> quantidadeDinheiro;
 
         ofstream arquivo("dados_cofre.txt", ios::app);
@@ -49,10 +52,10 @@ void guardarDinheiro()
                 << "Valor: " << quantidadeDinheiro << endl;
 
         arquivo.close();
-        gotoxy(42,26);
+        gotoxy(42, 26);
         cout << "Os dados foram salvos com sucesso!!!" << endl;
 
-        gotoxy(42,27);
+        gotoxy(42, 27);
         cout << "Deseja guardar mais dinheiro? (S/N): ";
         cin >> opcao;
     }

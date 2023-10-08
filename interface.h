@@ -9,64 +9,61 @@ using namespace std;
 
 void cabecalho()
 {
-    moldurinha(0,155,0,39,MAGENTA,WHITE);
+    moldurinha(0, 155, 0, 39, MAGENTA, WHITE);
 
-    moldurinha(30,120,8,30,WHITE, BLACK);
+    moldurinha(30, 120, 8, 30, WHITE, BLACK);
 
     gotoxy(55, 10);
-    cout<<"   ___          _           _   ";
+    cout << "   ___          _           _   ";
     gotoxy(55, 11);
-    cout<<R"(  / __\__ _  __| | __ _ ___| |_ _ __ ___ )";
+    cout << R"(  / __\__ _  __| | __ _ ___| |_ _ __ ___ )";
     gotoxy(55, 12);
-    cout<<R"( / /  / _` |/ _` |/ _` / __| __| '__/ _ \)";
+    cout << R"( / /  / _` |/ _` |/ _` / __| __| '__/ _ \)";
     gotoxy(55, 13);
-    cout<<R"(/ /__| (_| | (_| | (_| \__ \  |_| | | (_) |)";
+    cout << R"(/ /__| (_| | (_| | (_| \__ \  |_| | | (_) |)";
     gotoxy(55, 14);
-    cout<<R"(\____/\__,_|\__,_|\__,_|___/\___|_|  \___/)";
+    cout << R"(\____/\__,_|\__,_|\__,_|___/\___|_|  \___/)";
 }
 
 void tela_incial()
 {
     textbackground(MAGENTA);
     system("cls");
-    moldurinha(0,155,0,39, MAGENTA, WHITE);
+    moldurinha(0, 155, 0, 39, MAGENTA, WHITE);
 
-    gotoxy(45,9);
-    cout <<" _           _  _  _  _  _           _  _           _        _  ";
-    gotoxy(45,10);
-    cout <<"(_) _     _ (_)(_)(_)(_)(_) _       (_)(_)         (_)     _(_)_     ";
-    gotoxy(45,11);
+    gotoxy(45, 9);
+    cout << " _           _  _  _  _  _           _  _           _        _  ";
+    gotoxy(45, 10);
+    cout << "(_) _     _ (_)(_)(_)(_)(_) _       (_)(_)         (_)     _(_)_     ";
+    gotoxy(45, 11);
     cout << "(_)(_)   (_)(_)   (_)   (_)(_)_     (_)(_)         (_)   _(_) (_)_   ";
-    gotoxy(45,12);
-    cout <<"(_) (_)_(_) (_)   (_)   (_)  (_)_   (_)(_) _  _  _ (_) _(_)     (_)_ ";
-    gotoxy(45,13);
-    cout <<"(_)   (_)   (_)   (_)   (_)    (_)_ (_)(_)(_)(_)(_)(_)(_) _  _  _ (_)";
-    gotoxy(45,14);
-    cout <<"(_)         (_)   (_)   (_)      (_)(_)(_)         (_)(_)(_)(_)(_)(_)";
-    gotoxy(45,15);
-    cout <<"(_)         (_) _ (_) _ (_)         (_)(_)         (_)(_)         (_)";
-    gotoxy(45,16);
-    cout <<"(_)         (_)(_)(_)(_)(_)         (_)(_)         (_)(_)         (_)";
+    gotoxy(45, 12);
+    cout << "(_) (_)_(_) (_)   (_)   (_)  (_)_   (_)(_) _  _  _ (_) _(_)     (_)_ ";
+    gotoxy(45, 13);
+    cout << "(_)   (_)   (_)   (_)   (_)    (_)_ (_)(_)(_)(_)(_)(_)(_) _  _  _ (_)";
+    gotoxy(45, 14);
+    cout << "(_)         (_)   (_)   (_)      (_)(_)(_)         (_)(_)(_)(_)(_)(_)";
+    gotoxy(45, 15);
+    cout << "(_)         (_) _ (_) _ (_)         (_)(_)         (_)(_)         (_)";
+    gotoxy(45, 16);
+    cout << "(_)         (_)(_)(_)(_)(_)         (_)(_)         (_)(_)         (_)";
 
-    gotoxy(2,19);
-    cout<<"   _  _  _            _        _  _  _  _    _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _     _  _  _  _           _  _           _        _  ";
-    gotoxy(2,20);
-    cout<<" _(_)(_)(_)  _      _(_)_     (_)(_)(_)(_) _(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_) _ (_)(_)(_)(_) _       (_)(_)         (_)     _(_)_   ";
-    gotoxy(2,21);
-    cout<<"(_)         (_)   _(_) (_)_   (_)         (_)     (_)      (_)               (_)   (_)         (_)   (_)   (_)(_)_     (_)(_)         (_)   _(_) (_)_  ";
-    gotoxy(2,22);
-    cout<<"(_)             _(_)     (_)_ (_) _  _  _ (_)     (_)      (_) _  _          (_)   (_) _  _  _ (_)   (_)   (_)  (_)_   (_)(_) _  _  _ (_) _(_)     (_)_ ";
-    gotoxy(2,23);
-    cout<<"(_)            (_) _  _  _ (_)(_)(_)(_)(_)        (_)      (_)(_)(_)         (_)   (_)(_)(_)(_)      (_)   (_)    (_)_ (_)(_)(_)(_)(_)(_)(_) _  _  _ (_)";
-    gotoxy(2,24);
-    cout<<"(_)          _ (_)(_)(_)(_)(_)(_)   (_) _         (_)      (_)               (_)   (_)   (_) _       (_)   (_)      (_)(_)(_)         (_)(_)(_)(_)(_)(_)";
-    gotoxy(2,25);
-    cout<<"(_) _  _  _ (_)(_)         (_)(_)      (_) _      (_)      (_) _  _  _  _  _ (_) _ (_)      (_) _  _ (_) _ (_)         (_)(_)         (_)(_)         (_)";
-    gotoxy(2,26);
-    cout<<"   (_)(_)(_)   (_)         (_)(_)         (_)     (_)      (_)(_)(_)(_)(_)(_)(_)(_)(_)         (_)(_)(_)(_)(_)         (_)(_)         (_)(_)         (_)";
-
-
-
+    gotoxy(2, 19);
+    cout << "   _  _  _            _        _  _  _  _    _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _     _  _  _  _           _  _           _        _  ";
+    gotoxy(2, 20);
+    cout << " _(_)(_)(_)  _      _(_)_     (_)(_)(_)(_) _(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_) _ (_)(_)(_)(_) _       (_)(_)         (_)     _(_)_   ";
+    gotoxy(2, 21);
+    cout << "(_)         (_)   _(_) (_)_   (_)         (_)     (_)      (_)               (_)   (_)         (_)   (_)   (_)(_)_     (_)(_)         (_)   _(_) (_)_  ";
+    gotoxy(2, 22);
+    cout << "(_)             _(_)     (_)_ (_) _  _  _ (_)     (_)      (_) _  _          (_)   (_) _  _  _ (_)   (_)   (_)  (_)_   (_)(_) _  _  _ (_) _(_)     (_)_ ";
+    gotoxy(2, 23);
+    cout << "(_)            (_) _  _  _ (_)(_)(_)(_)(_)        (_)      (_)(_)(_)         (_)   (_)(_)(_)(_)      (_)   (_)    (_)_ (_)(_)(_)(_)(_)(_)(_) _  _  _ (_)";
+    gotoxy(2, 24);
+    cout << "(_)          _ (_)(_)(_)(_)(_)(_)   (_) _         (_)      (_)               (_)   (_)   (_) _       (_)   (_)      (_)(_)(_)         (_)(_)(_)(_)(_)(_)";
+    gotoxy(2, 25);
+    cout << "(_) _  _  _ (_)(_)         (_)(_)      (_) _      (_)      (_) _  _  _  _  _ (_) _ (_)      (_) _  _ (_) _ (_)         (_)(_)         (_)(_)         (_)";
+    gotoxy(2, 26);
+    cout << "   (_)(_)(_)   (_)         (_)(_)         (_)     (_)      (_)(_)(_)(_)(_)(_)(_)(_)(_)         (_)(_)(_)(_)(_)         (_)(_)         (_)(_)         (_)";
 }
 
 void confirmar()
@@ -74,20 +71,19 @@ void confirmar()
     int chave = 0;
     textbackground(WHITE);
     textcolor(BLACK);
-    gotoxy(70,29);
+    gotoxy(70, 29);
     cout << "PRESSIONE ENTER";
-    while(chave!=224 && chave!=13)
+    while (chave != 224 && chave != 13)
     {
-        gotoxy(70,30);
+        gotoxy(70, 30);
         textbackground(MAGENTA);
-        std :: cout <<"            ";
-        gotoxy(70,30);
+        std ::cout << "            ";
+        gotoxy(70, 30);
         chave = getch();
     }
 }
 
-
-void perfumaria_menu_principal(int cor)//tururu
+void perfumaria_menu_principal(int cor) // tururu
 {
     SetConsoleOutputCP(65001); // para permitir acentuação
 
@@ -121,35 +117,34 @@ void perfumariaMenuPerfil()
 {
     SetConsoleOutputCP(65001); // para permitir acentuação
 
-    gotoxy(64,24);
+    gotoxy(64, 24);
     textbackground(WHITE);
     textcolor(BLACK);
-    cout<<"ATUALIZAR USUÁRIO E SENHA";
-    gotoxy(70,29);
+    cout << "ATUALIZAR USUÁRIO E SENHA";
+    gotoxy(70, 29);
     textbackground(WHITE);
     textcolor(BLACK);
-    cout<<"APAGAR USUÁRIO";
-    gotoxy(74,34);
+    cout << "APAGAR USUÁRIO";
+    gotoxy(74, 34);
     textbackground(WHITE);
     textcolor(BLACK);
-    cout<<"VOLTAR";
+    cout << "VOLTAR";
 }
 
 void perfumariaMenuCarteirinha()
 {
-    gotoxy(70,24);
+    gotoxy(70, 24);
     textbackground(WHITE);
     textcolor(BLACK);
-    cout<<"EDITAR DADOS";
-    gotoxy(69,29);
+    cout << "EDITAR DADOS";
+    gotoxy(69, 29);
     textbackground(WHITE);
     textcolor(BLACK);
-    cout<<"ADICIONAR DADOS";
-    gotoxy(74,34);
+    cout << "ADICIONAR DADOS";
+    gotoxy(74, 34);
     textbackground(WHITE);
     textcolor(BLACK);
-    cout<<"VOLTAR";
-
+    cout << "VOLTAR";
 }
 
 void interfaceMenuSecundario()
@@ -174,7 +169,7 @@ void interface_menu(int n)
     retangulos(BLACK, 52, 14, 3, 50);
     retangulos(WHITE, 51, 13, 3, 50);
 
-    retangulos(BLACK, 52, 19, 3, 50);  // sombra do retângulo
+    retangulos(BLACK, 52, 19, 3, 50); // sombra do retângulo
     retangulos(WHITE, 51, 18, 3, 50); // retângulo branco
 
     retangulos(BLACK, 52, 24, 3, 50);
@@ -191,12 +186,14 @@ void retangulos(int color, int x, int y, int l, int c)
 {
     int i, j;
     textbackground(color);
+
     for (i = 0; i < l; i++)
     {
         gotoxy(x, y + i);
+
         for (j = 0; j < c; j++)
         {
-            std ::cout << " ";
+            cout << " ";
         }
     }
 }
@@ -205,14 +202,15 @@ void moldurinha(int l, int m, int x, int y, int colorFundo, int colorMoldura)
 {
     // Configura o console para modo de saída de caractere estendido
     SetConsoleOutputCP(437);
-    int i, j;
     textbackground(colorFundo);
-    for (i = x + 1; i < y; i++)
+
+    for (int i = x + 1; i < y; i++)
     {
         gotoxy(l + 1, i);
-        for (j = l + 1; j < m; j++)
+        for (int j = l + 1; j < m; j++)
             cout << " ";
     }
+
     textcolor(colorMoldura);
     gotoxy(l, x);
     cout << char(201); // caracter ╔
@@ -222,6 +220,7 @@ void moldurinha(int l, int m, int x, int y, int colorFundo, int colorMoldura)
     cout << char(200);
     gotoxy(m, y);
     cout << char(188);
+
     for (int linha = x + 1; linha < y; linha++)
     {
         gotoxy(l, linha);
@@ -229,6 +228,7 @@ void moldurinha(int l, int m, int x, int y, int colorFundo, int colorMoldura)
         gotoxy(m, linha);
         cout << char(186);
     }
+
     for (int coluna = l + 1; coluna < m; coluna++)
     {
         gotoxy(coluna, x);
@@ -240,7 +240,6 @@ void moldurinha(int l, int m, int x, int y, int colorFundo, int colorMoldura)
 
 void tela_final()
 {
-
     textbackground(LIGHTMAGENTA);
     system("cls");
     gotoxy(21, 5);

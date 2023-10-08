@@ -23,8 +23,8 @@ void entradaDeCategorias()
     string diretorioDadosDespesas = "dados_financeiros.txt";
     ofstream arquivo(diretorioDadosDespesas, ios::app);
 
-    gotoxy(34,17);
-    cout << "Segundo Passo - Vamos cadastrar suas despesas, por categorias (Moradia, Cartoes...)" ;
+    gotoxy(34, 17);
+    cout << "Segundo Passo - Vamos cadastrar suas despesas, por categorias (Moradia, Cartoes...)";
 
     const int maxDespesas = 100;
     Despesa **despesas = new Despesa *[maxDespesas]; // Vetor de ponteiros para Despesa
@@ -40,19 +40,18 @@ void entradaDeCategorias()
 
         arquivo << "Mes de Cadastro: " << despesas[numDespesas]->mesCadastro << endl;
 
-        gotoxy(42,19);
+        gotoxy(42, 19);
         cout << "Digite a categoria da despesa: ";
-        gotoxy(42,20);
+        gotoxy(42, 20);
         cin.ignore();
         getline(cin, despesas[numDespesas]->categoria);
 
-        gotoxy(42,21);
+        gotoxy(42, 21);
         cout << "Digite o valor da despesa: R$ ";
-        gotoxy(42,22);
-        cout<<"R$ ";
-        gotoxy(45,22);
+        gotoxy(42, 22);
+        cout << "R$ ";
+        gotoxy(45, 22);
         cin >> despesas[numDespesas]->valor;
-        
 
         despesas[numDespesas]->dataVencimento = solicitarDataVencimento();
 
@@ -73,10 +72,11 @@ void entradaDeCategorias()
 
         arquivo << endl;
 
-        gotoxy(42,28);
-        cout << "Despesa registrada com sucesso!" << endl << endl;
+        gotoxy(42, 28);
+        cout << "Despesa registrada com sucesso!" << endl
+             << endl;
 
-        gotoxy(42,29);
+        gotoxy(42, 29);
         cout << "Deseja adicionar outra despesa? (S/N): ";
         cin >> opcao;
         if (!(opcao == 'S' || opcao == 's'))
@@ -121,11 +121,11 @@ double solicitarTeto()
 {
     string tetoDeGasto;
     char escolha;
-    
-    gotoxy(42,25);
+
+    gotoxy(42, 25);
     cout << "Deseja digitar o teto de gasto? (S/N): ";
     fflush(stdin);
-    gotoxy(42,26);
+    gotoxy(42, 26);
     cin >> escolha;
 
     if (!(escolha == 'S' || escolha == 's'))
@@ -133,11 +133,11 @@ double solicitarTeto()
         return 0.0;
     }
 
-    gotoxy(42,26);
+    gotoxy(42, 26);
     cout << "Digite o teto de gasto (ou deixe em branco): ";
-    gotoxy(42,27);
+    gotoxy(42, 27);
     cout << "R$ ";
-    gotoxy(45,27);
+    gotoxy(45, 27);
     cin.ignore();
     getline(cin, tetoDeGasto);
 
@@ -155,9 +155,9 @@ string solicitarDataVencimento()
     string data;
 
     char escolha;
-    gotoxy(42,23);
+    gotoxy(42, 23);
     cout << "Deseja digitar a data de vencimento? (S/N): ";
-    gotoxy(42,24);
+    gotoxy(42, 24);
     cin >> escolha;
 
     if (!(escolha == 'S' || escolha == 's'))
@@ -167,12 +167,12 @@ string solicitarDataVencimento()
 
     do
     {
-            gotoxy(42,24);
-            cout<<"                                                                 ";
-            gotoxy(42,23);
-            cout << "Digite uma data válida de vencimento da despesa (dd-mm-aaaa): ";
-            gotoxy(42,24);
-            cin >> data;
+        gotoxy(42, 24);
+        cout << "                                                                 ";
+        gotoxy(42, 23);
+        cout << "Digite uma data válida de vencimento da despesa (dd-mm-aaaa): ";
+        gotoxy(42, 24);
+        cin >> data;
     } while (!validarData(data));
 
     return data;

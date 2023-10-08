@@ -21,8 +21,8 @@ using namespace std;
 
 #define MAX_GASTOS 10
 
-
-bool arquivoExiste(const string& arquivoDados) {
+bool arquivoExiste(const string &arquivoDados)
+{
     ifstream arquivo(arquivoDados);
     return arquivo.good();
 }
@@ -33,15 +33,15 @@ int main()
 
     cadastroOuLogin();
 
-    if (!arquivoExiste("dados_financeiros.txt")) {
+    if (!arquivoExiste("dados_financeiros.txt"))
+    {
 
         entradaDeRenda();
         entradaDeCategorias();
-//        entradaDeCofrinho();
-
+        //        entradaDeCofrinho();
     }
 
     menuPrincipal();
-    
+
     return 0;
 }

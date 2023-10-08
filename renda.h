@@ -18,9 +18,10 @@ Renda *criarRenda()
 }
 
 // Funcao main dessa biblioteca
-void entradaDeRenda() {
-    cout << "Bem-vindo a sua CARTEIRINHA!" << endl << endl;
-
+void entradaDeRenda()
+{
+    cout << "Bem-vindo a sua CARTEIRINHA!" << endl
+         << endl;
     cout << "Primeiro passo - Vamos cadastrar sua renda..." << endl;
 
     char opcao;
@@ -39,12 +40,13 @@ void entradaDeRenda() {
     } while (opcao == 'S' || opcao == 's');
 }
 
-void solicitarRenda(Renda *renda) {
+void solicitarRenda(Renda *renda)
+{
     ofstream arquivo("dados_renda.txt", ios::app);
 
+    cout << endl
+         << "Informe de onde vem a renda: ";
     cin.ignore();
-    cout << "" <<endl;
-    cout << "Informe de onde vem a renda: ";
     getline(cin, renda->nome);
 
     cout << "Insira o valor da renda mensal de " << renda->nome << ": R$ ";
@@ -68,6 +70,5 @@ void solicitarRenda(Renda *renda) {
     cout << "" << endl;
     cout << "Renda de " << renda->nome << " salva com sucesso!!!" << endl;
 }
-
 
 #endif
