@@ -170,7 +170,7 @@ int menuSetasPrincipal(int cor)
     
 }
 
-int menuSetasSecundario(bool identificaMenu)
+int menuSetasSecundario(int identificaMenu)
 {
     int escolha, enter = 1, linha = 24, aux = 24;
 
