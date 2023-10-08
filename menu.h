@@ -35,7 +35,7 @@ void menuPerfil()
 }
 void menuCarteirinha()
 {
-    // criar função para exibir os dados da carteirinha
+    carteirinha();
     int op;
     do
     {
@@ -43,12 +43,9 @@ void menuCarteirinha()
         switch (op)
         {
         case 1:
-            // editarDadosCarteirinha();
+            // adicionarGastosDiarios();
             break;
         case 2:
-            // adicionarDadosCarteirinha();
-            break;
-        case 3:
             menuPrincipal();
         }
     } while (op != 3);
