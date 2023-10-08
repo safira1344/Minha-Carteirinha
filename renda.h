@@ -9,6 +9,8 @@ struct Renda
 
 // Assinatura das funções
 void solicitarRenda(Renda *renda);
+void somarRenda(string &arquivoRenda, string &data, string &mesExtenso);
+void importarRenda(string &arquivoRenda, string &data, string &mesExtenso);
 
 Renda *criarRenda()
 {
@@ -79,4 +81,87 @@ void solicitarRenda(Renda *renda)
     cout << "Renda de " << renda->nome << " salva com sucesso!!!" << endl;
 }
 
+
+// Função que soma todas as rendas de dentro do arquivo de renda
+double somarRenda(string &arquivoRenda, string &data, string &mesExtenso)
+{
+    ifstream arquivo(arquivoRenda);
+
+    if (!arquivo.is_open())
+    {
+        cout << "Erro ao abrir o arquivo de rendas." << endl;
+    }
+
+    double totalRendas = 0.0;
+    string linha;
+
+    while (getline(arquivo, linha))
+    {
+        if (linha.find("Mes de Cadastro: " + data) != string::npos)
+        {
+            string nomeRenda;
+            double valorRenda = 0.0;
+
+            while (getline(arquivo, linha) && !linha.empty())
+            {
+                if (linha.find("Nome: ") != string::npos)
+                {
+                    nomeRenda = linha.substr(linha.find("Nome: ") + 6);
+                }
+                else if (linha.find("Valor: R$ ") != string::npos)
+                {
+                    valorRenda = stod(linha.substr(linha.find("Valor: R$ ") + 9));
+                }
+            }
+
+            totalRendas += valorRenda;
+        }
+    }
+
+    arquivo.close();
+
+    return totalRendas;
+}
+
+// Função que printa todas as rendas de dentro do arquivo de renda
+void importarRenda(string &arquivoRenda, string &data)
+{
+    ifstream arquivo(arquivoRenda);
+
+    if (!arquivo.is_open())
+    {
+        cout << "Erro ao abrir o arquivo de rendas." << endl;
+        return;
+    }
+
+    double totalRendas = 0.0;
+    string linha;
+
+    while (getline(arquivo, linha))
+    {
+        if (linha.find("Mes de Cadastro: " + data) != string::npos)
+        {
+            string nomeRenda;
+            double valorRenda = 0.0;
+
+            while (getline(arquivo, linha) && !linha.empty())
+            {
+                if (linha.find("Nome: ") != string::npos)
+                {
+                    nomeRenda = linha.substr(linha.find("Nome: ") + 6);
+                }
+                else if (linha.find("Valor: R$ ") != string::npos)
+                {
+                    valorRenda = stod(linha.substr(linha.find("Valor: R$ ") + 9));
+                }
+            }
+
+            totalRendas += valorRenda;
+
+            cout << nomeRenda << ": R$ " << valorRenda << endl;
+        }
+    }
+
+    arquivo.close();
+}
 #endif
