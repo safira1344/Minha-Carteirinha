@@ -9,26 +9,13 @@
 
 int menuSetasSecundario(int identificaMenu);
 int menuSetasPrincipal(int cor);
-
-void menuCarteirinha()
-{
-    int op;
-    do
-    {
-        op = menuSetasSecundario(1);
-        switch (op)
-        {
-        case 1:
-            break;
-        case 2:
-            // atualizarDadosCarteirinha();
-            break;
-        }
-    } while (op != 3);
-}
+void menuPerfil();
+void menuCarteirinha();
+void menuPrincipal();
 
 void menuPerfil()
 {
+    Usuario usuario;
     int op;
     do
     {
@@ -36,11 +23,33 @@ void menuPerfil()
         switch (op)
         {
         case 1:
-            // Aqui chamar a função de atualizar usuário e senha;
+            editarUsuario(&usuario);   
             break;
         case 2:
-            // Aqui chamar a função de apagar usuario;
+            apagarUsuario(&usuario);
             break;
+        case 3:
+            menuPrincipal();
+        }
+    } while (op != 3);
+}
+void menuCarteirinha()
+{
+    //criar função para exibir os dados da carteirinha
+    int op;
+    do
+    {
+        op = menuSetasSecundario(true);
+        switch (op)
+        {
+        case 1:
+            // editarDadosCarteirinha();
+            break;
+        case 2:
+            // adicionarDadosCarteirinha();
+            break;
+        case 3:
+            menuPrincipal();
         }
     } while (op != 3);
 }
@@ -56,19 +65,29 @@ void menuPrincipal()
         switch (escolha)
         {
         case 1:
-            menuSetasSecundario(true);
+            menuCarteirinha();
+            // menuSetasSecundario(true);
             break;
         case 2:
             emitirRelatorio();
             break;
         case 3:
-            cout << "teste";
+            notificacao();
             break;
         case 4:
-            menuSetasSecundario(false);
+            menuPerfil();
+            // menuSetasSecundario(false);
             break;
+        case 5:
+            calcularEmprestimo();
+            break;
+        case 6:
+            preverTempo();
+            break;
+        case 7:
+            exit(0);
         }
-    } while (escolha != 5);
+    } while (escolha != 7);
 }
 
 int menuSetasPrincipal(int cor)

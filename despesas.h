@@ -16,6 +16,7 @@ bool validarData(const string &data);
 double solicitarTeto();
 string solicitarDataVencimento();
 void entradaDeCategorias();
+void editarCategoria(Despesa *despesa);
 
 // Funcao main
 void entradaDeCategorias()

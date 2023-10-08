@@ -16,6 +16,7 @@ bool arquivoContemDados();
 void salvarUsuario(Usuario *novoUsuario);
 Usuario importarUsuario();
 bool verificarSenha(const string &senhaDigitada, Usuario *dados);
+void editarUsuario(Usuario *usuario);
 
 // Função main dessa biblioteca
 int cadastroOuLogin()
@@ -119,6 +120,36 @@ void novoCadastro(Usuario *novoUsuario)
          << endl;
 }
 
+void editarUsuario(Usuario *usuario) {
+    cabecalho();
+    gotoxy(50, 16);
+    cout << "Seja Bem Vindo, cadastre-se para usar a aplicacao!!!" << endl;
+    gotoxy(50, 17);
+    cout << "====================================================" << endl;
+    gotoxy(42, 19);
+    cout << "Digite seu nome de usuario: " << endl;
+    gotoxy(42, 20);
+    cin.ignore();
+    getline(cin, usuario->nome);
+    gotoxy(42, 22);
+    cout << "Digite seu cpf: " << endl;
+    gotoxy(42, 23);
+    getline(cin, usuario->cpf);
+    gotoxy(42, 25);
+    cout << "Digite sua senha de login: " << endl;
+    gotoxy(42, 26);
+    getline(cin, usuario->senha);
+    salvarUsuario(usuario);
+    gotoxy(61, 28);
+    cout << "Usuario editado com sucesso" << endl;
+    gotoxy(50, 29);
+    cout << "====================================================" << endl
+         << endl;
+}
+
+void apagarUsuario(Usuario *novoUsuario){
+    novoCadastro(novoUsuario);
+}
 // Função que mostra os dados do usuário
 void dadosUsuario(Usuario *novoUsuario)
 {
