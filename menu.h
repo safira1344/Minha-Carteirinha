@@ -35,10 +35,11 @@ void menuPerfil()
 }
 void menuCarteirinha()
 {
-    carteirinha();
+    // carteirinha();
     int op;
     do
     {
+        carteirinha();
         op = menuSetasSecundario(1);
         switch (op)
         {
@@ -74,15 +75,17 @@ void menuPrincipal()
             menuPerfil();
             break;
         case 5:
+            tetoDeGastos();
+        case 6:
             calcularEmprestimo();
             break;
-        case 6:
+        case 7:
             preverTempo();
             break;
-        case 7:
+        case 8:
             exit(0);
         }
-    } while (escolha != 7);
+    } while (escolha != 8);
 }
 
 int menuSetasPrincipal(int cor)

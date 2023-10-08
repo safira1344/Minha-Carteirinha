@@ -16,8 +16,8 @@ using namespace std;
 #include "renda.h"
 #include "cofrinho.h"
 #include "relatorio.h"
-#include "menu.h"
 #include "carteirinha.h"
+#include "menu.h"
 
 #define MAX_GASTOS 10
 

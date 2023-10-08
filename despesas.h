@@ -9,7 +9,7 @@ struct Despesa
     string mesCadastro; // Esse int representa o mes em que a despesa foi cadastrada
 };
 
-struct Gasto {
+struct GastoDiario {
     string descricao;
     double valor;
 };
@@ -121,7 +121,7 @@ void desepesaDiaria() {
 
     if (!arquivoTeto) {
         cout << "Erro ao abrir o arquivo" << endl;
-        return 1;
+        return;
     }
 
     double tetoDeGastos;
@@ -133,40 +133,40 @@ void desepesaDiaria() {
 
     if (!despesasArquivo) {
         cout << "Erro ao abrir o arquivo" << endl;
-        return 1;
+        return;
     }
 
     char continuar;
 
     do {
-       Gasto *gasto = new Gasto;
+       GastoDiario *gastoDiario = new GastoDiario;
 
         cout << "Digite a descrição do gasto: ";
         cin.ignore(); 
-        getline(cin, gasto->descricao);
+        getline(cin, gastoDiario->descricao);
 
         cout << "Digite o valor do gasto: ";
-        cin >> gasto->valor;
+        cin >> gastoDiario->valor;
 
-        despesasArquivo << gasto->descricao << endl;
-        despesasArquivo <<": " << gasto->valor << endl;
+        despesasArquivo << gastoDiario->descricao << endl;
+        despesasArquivo <<": " << gastoDiario->valor << endl;
 
-        delete gasto;
+        delete gastoDiario;
 
         cout << "Deseja adicionar mais gastos? (S/N): ";
         cin >> continuar;
 
     } while (continuar == 'S' || continuar == 's');
 
-    despesasArquivo.close();
+    // despesasArquivo.close();
 
-    // Abrir o arquivo "despesas_variaveis.txt" para leitura e soma
-    ifstream despesasArquivo("despesas_variaveis.txt");
+    // // Abrir o arquivo "despesas_variaveis.txt" para leitura e soma
+    // ifstream despesasArquivo("despesas_variaveis.txt");
 
-    if (!despesasArquivo) {
-        cout << "Erro ao abrir o arquivo 'despesas_variaveis.txt'" << endl;
-        return 1;
-    }
+    // if (!despesasArquivo) {
+    //     cout << "Erro ao abrir o arquivo 'despesas_variaveis.txt'" << endl;
+    //     return;
+    // }
 
     double totalGastos = 0.0;
     double valor;
@@ -199,7 +199,7 @@ void imprimirDespesasDiarias() {
         cout << linha << endl << endl;
     }
 
-    despesasFile.close();
+    despesasArquivo.close();
 }
 
 // Função para adicionar despesas variáveis a o arquivo financeiro
