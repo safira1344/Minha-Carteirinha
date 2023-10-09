@@ -9,8 +9,8 @@
 
 using namespace std;
 #include "gconio.h"
-#include "mensagens.h"
 #include "interface.h"
+#include "mensagens.h"
 #include "usuario.h"
 #include "despesas.h"
 #include "renda.h"
@@ -32,7 +32,7 @@ int main()
     Usuario novoUsuario;
 
     tela_incial();
-    confirmar();
+    confirmar(70, 29);
     cadastroOuLogin();
 
     if (!arquivoExiste("dados_financeiros.txt"))

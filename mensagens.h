@@ -1,7 +1,6 @@
 #ifndef MENSAGENS_H_INCLUDED
 #define MENSAGENS_H_INCLUDED
 
-
 struct Gasto
 {
     string categoria;
@@ -62,17 +61,19 @@ int notificacao()
 
             if (dataProxima(despesaAtual.dataVenc))
             {
-                if(l == 26)
-                    confirmar(42,27);
+                if (l == 26)
+                
+                    confirmar(42, 27);
+
                 else
                 {
-                    gotoxy(42,l);
+                    gotoxy(42, l);
                     cout << "Aviso: A data de vencimento para a categoria '" << despesaAtual.categoria;
-                    gotoxy(42,+1);
-                    cout<< "' esta proxima (" << despesaAtual.dataVenc << ").";
+                    gotoxy(42, +1);
+                    cout << "' esta proxima (" << despesaAtual.dataVenc << ").";
                     l++;
                 }
-                n=RED;
+                n = RED;
             }
         }
     }

@@ -4,6 +4,9 @@
 void moldurinha(int l, int m, int x, int y, int colorFundo, int colorMoldura);
 void retangulos(int color, int x, int y, int l, int c);
 void tela_incial();
+void telinha();
+void cabecalho();
+void confirmar(int x,int y);
 
 using namespace std;
 
@@ -101,7 +104,7 @@ void confirmar(int x,int y)
     {
         gotoxy(x,y);
         textbackground(MAGENTA);
-        std ::cout << "            ";
+        cout << "            ";
         gotoxy(x,y);
         chave = getch();
     }
