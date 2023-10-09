@@ -101,7 +101,7 @@ void logarUsuario(Usuario *usuario)
 
         // Se o numero de tentativas for maior que 3 o usuário pode cadastrar um novo usuário ou sair do sistema
     }
-    menuPrincipal();
+    // menuPrincipal();
 }
 
 // Função para cadastrar usuario no sistema
@@ -137,7 +137,7 @@ void novoCadastro(Usuario *novoUsuario)
          << endl;
 
     
-    menuPrincipal();
+    // menuPrincipal();
 }
 
 void editarUsuario(Usuario *usuario)
@@ -175,7 +175,7 @@ void editarUsuario(Usuario *usuario)
          << endl;
 
     
-    menuPrincipal();
+    // menuPrincipal();
 }
 
 void apagarUsuario(Usuario *novoUsuario)

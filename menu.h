@@ -30,16 +30,16 @@ void menuPerfil()
             break;
         case 3:
             menuPrincipal();
+            break;
         }
     } while (op != 3);
 }
 void menuCarteirinha()
 {
-    // carteirinha();
+    carteirinha();
     int op;
     do
     {
-        carteirinha();
         op = menuSetasSecundario(1);
         switch (op)
         {
@@ -51,6 +51,7 @@ void menuCarteirinha()
             break;
         case 3:
             menuPrincipal();
+            break;
         }
     } while (op != 3);
 }
@@ -63,6 +64,8 @@ void menuPrincipal()
     do
     {
         escolha = menuSetasPrincipal(color);
+        // interface_menu(cor); //cor
+        // perfumaria_menu_principal(cor); //cor
         switch (escolha)
         {
         case 1:

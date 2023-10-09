@@ -8,6 +8,7 @@
 #include <regex>
 
 using namespace std;
+
 #include "gconio.h"
 #include "interface.h"
 #include "mensagens.h"
@@ -43,7 +44,6 @@ int main()
         entradaDeCategorias();
         guardarDinheiro();
     }
-
 
     return 0;
 }
