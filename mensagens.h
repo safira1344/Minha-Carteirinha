@@ -30,7 +30,7 @@ bool dataProxima(const string &dataVenc)
 int notificacao()
 {
     ifstream arquivo("dados_financeiros.txt");
-    int n = 0;
+    int n = 15;
     int l = 10;
 
     telinha();
@@ -38,7 +38,7 @@ int notificacao()
     if (!arquivo.is_open())
     {
         cout << "Erro ao abrir o arquivo para leitura." << endl;
-        exit(1);
+        return(1);
     }
 
     string linha;
