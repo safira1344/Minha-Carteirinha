@@ -7,14 +7,24 @@ string converterMes(string data);
 // Funcao main dessa biblioteca
 void emitirRelatorio()
 {
+    telinha();
+
     string data;
+
+    gotoxy(42,10);
     cout << "Digite o mes desejado no formato mm-aaaa: ";
+    gotoxy(42,11);
     cin >> data;
 
-    if (data.size() != 7 || data[2] != '-')
+    while(data.size() != 7 || data[2] != '-')
     {
+        moldurinha(30, 120, 8, 30, WHITE, BLACK);
+        gotoxy(42,10);
         cout << "Formato de mês inválido. Use o formato mm-aaaa." << endl;
-        return;
+        gotoxy(10,11);
+        cout << "Digite o mes desejado no formato mm-aaaa: ";
+        gotoxy(10,12);
+        cin >> data;
     }
 
     string mesExtenso = converterMes(data);
@@ -30,32 +40,31 @@ void emitirRelatorio()
     Usuario usuario = importarUsuario();
     string mesEmissao = obterMesAtual();
 
-    cout << endl
-         << "---- RELATORIO DE CONTROLE DE GASTOS DO MES " << data << " ----" << endl
-         << endl;
-    cout << "Nome: " << usuario.nome << endl;
-    cout << "CPF: " << usuario.cpf << endl
-         << endl;
-    cout << "Mes de emissao do Relatorio: " << mesEmissao << endl
-         << endl;
-    cout << "RENDA" << endl;
-    cout << "- Renda Total de " << mesExtenso << ": " << totalRendas << endl
-         << endl;
+    telinha();
+
+    gotoxy(42,10);
+    cout << "---- RELATORIO DE CONTROLE DE GASTOS DO MES " << data << " ----" ;
+    gotoxy(42,12);
+    cout << "Nome: " << usuario.nome ;
+    gotoxy(42,13);
+    cout << "CPF: " << usuario.cpf;
+    gotoxy(42,14);
+    cout << "Mes de emissao do Relatorio: " << mesEmissao;
+    gotoxy(42,15);
+    cout << "RENDA" ;
+    gotoxy(42,16);
+    cout << "- Renda Total de " << mesExtenso << ": " << totalRendas;
 
     extrairDespesas(arquivoDespesa, data);
 
-    cout << "" << endl;
-    cout << "Despesa total em " << mesExtenso << ": " << despesaTotal << endl
-         << endl;
-
+    gotoxy(42,18);
+    cout << "Despesa total em " << mesExtenso << ": " << despesaTotal ;
     extrairCofrinho(arquivoCofre, data);
 
-    cout << "" << endl;
-    cout << "Valor total guardado em " << mesExtenso << ": " << totalGuardado << endl
-         << endl;
-
-    cout << "-------------------------------------------------------" << endl
-         << endl;
+    gotoxy(42,19);
+    cout << "Valor total guardado em " << mesExtenso << ": " << totalGuardado;
+    gotoxy(42,20);
+    cout << "-------------------------------------------------------";
 }
 
 // Função que escreve o mes por extenso
