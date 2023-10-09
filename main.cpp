@@ -34,6 +34,7 @@ int main()
     tela_incial();
     confirmar(70, 29);
     cadastroOuLogin();
+    menuPrincipal();
 
     if (!arquivoExiste("dados_financeiros.txt"))
     {
@@ -43,7 +44,6 @@ int main()
         guardarDinheiro();
     }
 
-    menuPrincipal();
 
     return 0;
 }

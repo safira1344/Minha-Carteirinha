@@ -17,6 +17,8 @@ void salvarUsuario(Usuario *novoUsuario);
 Usuario importarUsuario();
 bool verificarSenha(const string &senhaDigitada, Usuario *dados);
 void editarUsuario(Usuario *usuario);
+void menuPrincipal();
+
 
 // Função main dessa biblioteca
 int cadastroOuLogin()
@@ -40,11 +42,11 @@ void logarUsuario(Usuario *usuario)
 {
     *usuario = importarUsuario();
 
-     telaLogin();
+    telaLogin();
 
-    gotoxy(42,17);
+    gotoxy(42, 17);
     cout << "Ola, " << usuario->nome << "!" << endl;
-    gotoxy(42,18);
+    gotoxy(42, 18);
     cout << "====================================================" << endl;
 
     int tentativas = 0;
@@ -53,32 +55,32 @@ void logarUsuario(Usuario *usuario)
     char opcao;
     while (true)
     {
-        gotoxy(42,19);
+        gotoxy(42, 19);
         cout << "Digite sua senha de login: " << endl;
-        gotoxy(42,20);
+        gotoxy(42, 20);
         getline(cin, senhaDigitada);
-        gotoxy(42,20);
+        gotoxy(42, 20);
         cout << "                              " << endl;
 
         if (verificarSenha(senhaDigitada, usuario))
         {
-            gotoxy(42,21);
+            gotoxy(42, 21);
             cout << "Senha correta!" << endl;
             break;
         }
         else
         {
-            gotoxy(42,21);
+            gotoxy(42, 21);
             cout << "Senha incorreta!" << endl;
             if (++tentativas == 3)
             {
-                gotoxy(42,23);
+                gotoxy(42, 23);
                 cout << "Numero de tentativas excedido, conta bloqueada!" << endl;
-                gotoxy(42,24);
+                gotoxy(42, 24);
                 cout << "Contate o administrador do sistema." << endl;
-                gotoxy(42,25);
+                gotoxy(42, 25);
                 cout << "Deseja cadastrar um novo usuario? (S/N)" << endl;
-                gotoxy(42,26);
+                gotoxy(42, 26);
                 cin >> opcao;
 
                 if (opcao == 'S' || opcao == 's')
@@ -87,18 +89,19 @@ void logarUsuario(Usuario *usuario)
                 }
                 else
                 {
-                    gotoxy(42,26);
+                    gotoxy(42, 26);
                     cout << "Obrigado por usar o programa!" << endl;
                     exit(0);
                 }
                 return;
             }
-            gotoxy(42,22);
+            gotoxy(42, 22);
             cout << "Voce tem mais " << 3 - tentativas << " tentativas." << endl;
         }
 
         // Se o numero de tentativas for maior que 3 o usuário pode cadastrar um novo usuário ou sair do sistema
     }
+    menuPrincipal();
 }
 
 // Função para cadastrar usuario no sistema
@@ -132,6 +135,8 @@ void novoCadastro(Usuario *novoUsuario)
     gotoxy(50, 29);
     cout << "====================================================" << endl
          << endl;
+
+    menuPrincipal();
 }
 
 void editarUsuario(Usuario *usuario)
@@ -141,22 +146,29 @@ void editarUsuario(Usuario *usuario)
     cout << "Seja Bem Vindo, cadastre-se para usar a aplicacao!!!" << endl;
     gotoxy(50, 17);
     cout << "====================================================" << endl;
+
     gotoxy(42, 19);
     cout << "Digite seu nome de usuario: " << endl;
     gotoxy(42, 20);
-    cin.ignore();
+    // cin.ignore();
     getline(cin, usuario->nome);
     gotoxy(42, 22);
     cout << "Digite seu cpf: " << endl;
+
     gotoxy(42, 23);
     getline(cin, usuario->cpf);
     gotoxy(42, 25);
     cout << "Digite sua senha de login: " << endl;
+
     gotoxy(42, 26);
     getline(cin, usuario->senha);
+    cin.ignore();
+    
     salvarUsuario(usuario);
+
     gotoxy(61, 28);
     cout << "Usuario editado com sucesso" << endl;
+
     gotoxy(50, 29);
     cout << "====================================================" << endl
          << endl;

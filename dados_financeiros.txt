@@ -1,0 +1,4 @@
+Mes de Cadastro: 10-2023
+Categoria: moradia
+Valor: 7854
+
