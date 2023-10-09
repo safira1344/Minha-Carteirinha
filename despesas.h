@@ -29,8 +29,7 @@ void entradaDeCategorias()
     string diretorioDadosDespesas = "dados_financeiros.txt";
     ofstream arquivo(diretorioDadosDespesas, ios::app);
 
-    gotoxy(34, 17);
-    cout << "Segundo Passo - Vamos cadastrar suas despesas fixas, por categorias (Moradia, Energia, etc.)";
+    retangulos(WHITE, 40, 15 , 14, 79);
 
     const int maxDespesas = 100;
     Despesa **despesas = new Despesa *[maxDespesas]; // Vetor de ponteiros para Despesa
@@ -38,13 +37,16 @@ void entradaDeCategorias()
     char opcao;
     int numDespesas = 0;
 
-    for (int numDespesas = 0; numDespesas < maxDespesas; numDespesas++)
-    {
+    for (int numDespesas = 0; numDespesas < maxDespesas; numDespesas++){
+
         despesas[numDespesas] = new Despesa;
 
         despesas[numDespesas]->mesCadastro = obterMesAtual();
 
         arquivo << "Mes de Cadastro: " << despesas[numDespesas]->mesCadastro << endl;
+
+        gotoxy(40, 17);
+        cout << "Segundo Passo - Cadastre suas despesas fixas (Moradia, Energia...)";
 
         gotoxy(42, 19);
         cout << "Digite a categoria da despesa: ";
@@ -53,7 +55,7 @@ void entradaDeCategorias()
         getline(cin, despesas[numDespesas]->categoria);
 
         gotoxy(42, 21);
-        cout << "Digite o valor da despesa: R$ ";
+        cout << "Digite o valor da despesa:";
         gotoxy(42, 22);
         cout << "R$ ";
         gotoxy(45, 22);
@@ -71,13 +73,14 @@ void entradaDeCategorias()
 
         arquivo << endl;
 
-        gotoxy(42, 28);
+        gotoxy(42, 27);
         cout << "Despesa registrada com sucesso!" << endl
              << endl;
 
         gotoxy(42, 29);
         cout << "Deseja adicionar outra despesa fixa? (S/N): ";
         cin >> opcao;
+        retangulos(WHITE, 40, 15 , 14, 79);
         if (!(opcao == 'S' || opcao == 's'))
         {
             break;
@@ -93,11 +96,17 @@ int tetoDeGastos()
 {
     double *limiteGastos = new double;
 
-    cout << "Terceiro Passo - Vamos cadastrar um teto de gasto para suas despesas variáveis..." << endl
-         << endl;
-    cout << "Para que o programa possa lhe ajudar e ser eficiente, insira todos os dias seus gastos diario na sua carteirinha" << endl
-         << endl;
-    cout << "Digite o limite de gastos para o mês: ";
+    telinha();
+    cabecalho();
+    gotoxy(42,17);
+    cout << "Terceiro Passo - Cadastre um teto de gasto para suas despesas variaveis" ;
+    gotoxy(42,19);
+    cout << "Para que o programa possa lhe ajudar e ser eficiente";
+    gotoxy(42,20);
+    cout << "insira todos os dias seus gastos diario na sua carteirinha" ;
+    gotoxy(42,22);
+    cout << "Digite o limite de gastos para o mes: ";
+    gotoxy(42,23);
     cin >> *limiteGastos;
 
     ofstream arquivoDeTeto("teto_de_gastos.txt");
@@ -113,7 +122,7 @@ int tetoDeGastos()
 
     arquivoDeTeto.close();
 
-    cout << "" << endl;
+    gotoxy(42,26);
     cout << "Teto de gastos salvo com sucesso!" << endl;
 
     delete limiteGastos;
@@ -124,6 +133,10 @@ int tetoDeGastos()
 void desepesaDiaria()
 {
     ifstream arquivoTeto("teto_de_gastos.txt");
+
+    moldurinha(0, 155, 0, 39, MAGENTA, WHITE);
+
+    moldurinha(30, 120, 8, 30, WHITE, BLACK);
 
     if (!arquivoTeto)
     {
@@ -150,11 +163,15 @@ void desepesaDiaria()
     {
         GastoDiario *gastoDiario = new GastoDiario;
 
+        gotoxy(42,10);
         cout << "Digite a descrição do gasto: ";
+        gotoxy(42,11);
         cin.ignore();
         getline(cin, gastoDiario->descricao);
 
+        gotoxy(42,12);
         cout << "Digite o valor do gasto: ";
+        gotoxy(42,13);
         cin >> gastoDiario->valor;
 
         despesasArquivo << gastoDiario->descricao << endl;
@@ -162,20 +179,11 @@ void desepesaDiaria()
 
         delete gastoDiario;
 
+        gotoxy(42,14);
         cout << "Deseja adicionar mais gastos? (S/N): ";
         cin >> continuar;
 
     } while (continuar == 'S' || continuar == 's');
-
-    // despesasArquivo.close();
-
-    // // Abrir o arquivo "despesas_variaveis.txt" para leitura e soma
-    // ifstream despesasArquivo("despesas_variaveis.txt");
-
-    // if (!despesasArquivo) {
-    //     cout << "Erro ao abrir o arquivo 'despesas_variaveis.txt'" << endl;
-    //     return;
-    // }
 
     double totalGastos = 0.0;
     double valor;
@@ -189,15 +197,24 @@ void desepesaDiaria()
     // Calcular o valor restante até o teto de gastos
     double gastosRestantes = tetoDeGastos - totalGastos;
 
+    gotoxy(42,16);
     cout << "Soma de todos os gastos: " << totalGastos << endl;
-    cout << "Restante para atingir o limite de gastos: " << gastosRestantes << endl
-         << endl;
-    cout << "A responsabilidade financeira é uma qualidade fundamental para uma vida financeira saudável!" << endl;
+    gotoxy(42,17);
+    cout << "Restante para atingir o limite de gastos: " << gastosRestantes ;
+
+    gotoxy(42,19);
+    cout << "A responsabilidade financeira é uma qualidade fundamental ";
+    gotoxy(42,20);
+    cout<<"para uma vida financeira saudável!";
 }
 
 void imprimirDespesasDiarias()
 {
+
     ifstream despesasArquivo("despesas_variaveis.txt");
+    int l = 10;
+
+    telinha();
 
     if (!despesasArquivo)
     {
@@ -209,8 +226,16 @@ void imprimirDespesasDiarias()
     cout << "Despesas Variáveis:" << endl;
     while (getline(despesasArquivo, linha))
     {
-        cout << linha << endl
-             << endl;
+        if(l == 26)
+        {
+            confirmar(42,27);
+        }
+        else
+        {
+            gotoxy(42,l);
+            cout << linha ;
+            l++;
+        }
     }
 
     despesasArquivo.close();
@@ -219,8 +244,11 @@ void imprimirDespesasDiarias()
 // Função para adicionar despesas variáveis a o arquivo financeiro
 void salvarGastosVar()
 {
+    telinha();
     string data;
+    gotoxy(42,10);
     cout << "A que mes esses gastos são referenetes (mm-aaaa): ";
+    gotoxy(42,11);
     getline(cin, data);
 
     ifstream arquivoDespesas("despesas_variaveis.txt");
@@ -244,8 +272,10 @@ void salvarGastosVar()
     arquivoDespesas.close();
     arquivoFinanceiro.close();
 
-    cout << "Despesas variáveis salvas com sucesso!!" << endl;
-    cout << "Para acessa-las, vá na opção RELATORIO no menu principal." << endl;
+    gotoxy(42,13);
+    cout << "Despesas variáveis salvas com sucesso!!" ;
+    gotoxy(42,14);
+    cout << "Para acessa-las, vá na opção RELATORIO no menu principal." ;
 }
 
 // Funcao para obter o mes atual
@@ -296,7 +326,7 @@ string solicitarDataVencimento()
         gotoxy(42, 24);
         cout << "                                                                 ";
         gotoxy(42, 23);
-        cout << "Digite uma data válida de vencimento da despesa (dd-mm-aaaa): ";
+        cout << "Digite uma data valida de vencimento da despesa (dd-mm-aaaa): ";
         gotoxy(42, 24);
         cin >> data;
     } while (!validarData(data));
@@ -350,3 +380,4 @@ double extrairDespesas(string &arquivoDespesa, string &data)
 }
 
 #endif
+
