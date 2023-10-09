@@ -27,10 +27,6 @@ void guardarDinheiro()
         cout << "Informe o nome do cofrinho: ";
         gotoxy(42, 20);
         cin >> nomeCofrinho;
-        gotoxy(42, 19);
-        cout << "Informe o nome do cofrinho: ";
-        gotoxy(42, 20);
-        cin >> nomeCofrinho;
 
         double quantidadeDinheiro;
 
@@ -115,14 +111,23 @@ void preverTempo()
     double valorAlvo;
     double economiaMensal;
 
-    cout << "Informe o valor alvo que deseja alcançar: R$ ";
+    telinha();
+
+    gotoxy(42,10);
+    cout << "Informe o valor alvo que deseja alcançar:";
+    gotoxy(42,11);
+    cout <<"R$ ";
     cin >> valorAlvo;
 
-    cout << "Informe a economia mensal que deseja fazer: R$ ";
+    gotoxy(42,12);
+    cout << "Informe a economia mensal que deseja fazer:";
+    gotoxy(42,13);
+    cout << "R$ ";
     cin >> economiaMensal;
 
     if (valorAlvo <= 0 || economiaMensal <= 0)
     {
+        gotoxy(42,14);
         cout << "Informe um valor alvo e uma economia mensal válidos maiores que zero." << endl;
         return;
     }
@@ -136,7 +141,10 @@ void preverTempo()
         meses++;
     }
 
-    cout << "Com uma economia de R$ " << economiaMensal << " por mês, levará aproximadamente " << meses << " meses para alcançar o valor alvo de R$ " << valorAlvo << "." << endl;
+    gotoxy(42,15);
+    cout << "Com uma economia de R$ " << economiaMensal << " por mês, levará aproximadamente " << meses ;
+    gotoxy(42,16);
+    cout <<" meses para alcançar o valor alvo de R$ " << valorAlvo << "." ;
 }
 
 // Função q calcula os ganhos ao final de um empréstimo com juros mensais crescentes
@@ -146,23 +154,30 @@ double calcularEmprestimo()
     double taxaJuros;
     int meses;
 
+    telinha();
+    gotoxy(42,10);
     cout << "Informe o valor que deseja emprestar: R$ ";
+    gotoxy(42,11);
     cin >> valorEmprestado;
 
+    gotoxy(42,12);
     cout << "Informe a taxa de juros mensal (em decimal): ";
+    gotoxy(42,13);
     cin >> taxaJuros;
 
     if (valorEmprestado <= 0 || taxaJuros <= 0)
     {
+        gotoxy(42,14);
         cout << "Informe um valor de empréstimo e uma taxa de juros válidos maiores que zero." << endl;
         return 0.0;
     }
-
+    gotoxy(42,15);
     cout << "Informe o número de meses para o empréstimo: ";
     cin >> meses;
 
     if (meses <= 0)
     {
+        gotoxy(42,16);
         cout << "Informe um número de meses válido maior que zero." << endl;
         return 0.0;
     }
