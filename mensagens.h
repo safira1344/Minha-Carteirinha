@@ -1,6 +1,7 @@
 #ifndef MENSAGENS_H_INCLUDED
 #define MENSAGENS_H_INCLUDED
 
+
 struct Gasto
 {
     string categoria;
@@ -31,6 +32,9 @@ int notificacao()
 {
     ifstream arquivo("dados_financeiro.txt");
     int n = 0;
+    int l = 10;
+
+    telinha();
 
     if (!arquivo.is_open())
     {
@@ -43,6 +47,7 @@ int notificacao()
 
     while (getline(arquivo, linha))
     {
+
         if (linha.find("Categoria: ") != string::npos)
         {
             despesaAtual.categoria = linha.substr(11);
@@ -57,10 +62,17 @@ int notificacao()
 
             if (dataProxima(despesaAtual.dataVenc))
             {
-                cout << "Aviso: A data de vencimento para a categoria '" << despesaAtual.categoria
-                     << "' esta proxima (" << despesaAtual.dataVenc << ")." << endl
-                     << endl;
-                n++;
+                if(l == 26)
+                    confirmar(42,27);
+                else
+                {
+                    gotoxy(42,l);
+                    cout << "Aviso: A data de vencimento para a categoria '" << despesaAtual.categoria;
+                    gotoxy(42,+1);
+                    cout<< "' esta proxima (" << despesaAtual.dataVenc << ").";
+                    l++;
+                }
+                n=RED;
             }
         }
     }
