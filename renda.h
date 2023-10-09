@@ -22,11 +22,6 @@ Renda *criarRenda()
 // Funcao main dessa biblioteca
 void entradaDeRenda()
 {
-    gotoxy(60, 16);
-    cout << "Bem-vindo a sua CARTEIRINHA!";
-    gotoxy(51, 17);
-    cout << "Primeiro passo - Vamos cadastrar sua renda..." << endl;
-
     char opcao;
 
     do
@@ -48,7 +43,11 @@ void entradaDeRenda()
 void solicitarRenda(Renda *renda)
 {
     ofstream arquivo("dados_renda.txt", ios::app);
-
+    cabecalho();
+    gotoxy(60, 16);
+    cout << "Bem-vindo a sua CARTEIRINHA!";
+    gotoxy(51, 17);
+    cout << "Primeiro passo - Vamos cadastrar sua renda..." << endl;
     gotoxy(42, 19);
     cout << "Informe de onde vem a renda: ";
     gotoxy(42, 20);
@@ -77,7 +76,7 @@ void solicitarRenda(Renda *renda)
 
     arquivo.close();
 
-    cout << "" << endl;
+    gotoxy(42,25);
     cout << "Renda de " << renda->nome << " salva com sucesso!!!" << endl;
 }
 
