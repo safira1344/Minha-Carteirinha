@@ -3,7 +3,7 @@
 
 // Assinatura das funções
 double extrairCofrinho(string &arquivoCofre, string &data);
-double calcularEmprestimo();
+double calcularEmprestimo(double valorEmprestado, double taxaJuros, int meses);
 void preverTempo();
 
 // Funcao main dessa biblioteca
@@ -107,10 +107,9 @@ double extrairCofrinho(string &arquivoCofre, string &data)
 }
 
 // Função  para prever em quanto tempo o usuário terá uma certa quantidade de dinheiro
-void preverTempo()
-{
-    double valorAlvo;
-    double economiaMensal;
+void preverTempo() {
+    double valorAlvo = 0;
+    double economiaMensal = 0;
 
     telinha();
 
@@ -118,26 +117,40 @@ void preverTempo()
     cout << "Informe o valor alvo que deseja alcançar:";
     gotoxy(42, 11);
     cout << "R$ ";
-    cin >> valorAlvo;
+
+    // Verifica a entrada para valorAlvo
+    while (!(cin >> valorAlvo) || valorAlvo <= 0) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        gotoxy(42, 14);
+        cout << "Informe um valor alvo válido maior que zero." << endl;
+        gotoxy(42, 11);
+        cout << "R$ ";
+    }
 
     gotoxy(42, 12);
     cout << "Informe a economia mensal que deseja fazer:";
     gotoxy(42, 13);
     cout << "R$ ";
-    cin >> economiaMensal;
 
-    if (valorAlvo <= 0 || economiaMensal <= 0)
-    {
+    // Limpa o buffer de entrada antes de ler economiaMensal pois antes estava entrando em loop
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    // Verifica a entrada para economiaMensal
+    while (!(cin >> economiaMensal) || economiaMensal <= 0) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         gotoxy(42, 14);
-        cout << "Informe um valor alvo e uma economia mensal válidos maiores que zero." << endl;
-        return;
+        cout << "Informe uma economia mensal válida maior que zero." << endl;
+        gotoxy(42, 13);
+        cout << "R$ ";
     }
 
     double saldoAtual = 0;
     int meses = 0;
 
-    while (saldoAtual < valorAlvo)
-    {
+    while (saldoAtual < valorAlvo) {
         saldoAtual += economiaMensal;
         meses++;
     }
@@ -151,49 +164,38 @@ void preverTempo()
 }
 
 // Função q calcula os ganhos ao final de um empréstimo com juros mensais crescentes
-double calcularEmprestimo()
+double calcularEmprestimo(double valorEmprestado, double taxaJuros, int meses)
 {
-    double valorEmprestado;
-    double taxaJuros;
-    int meses;
+    double resultado;
+    double saldoMesAnterior;
 
     telinha();
-    gotoxy(42, 10);
-    cout << "Informe o valor que deseja emprestar: R$ ";
-    gotoxy(42, 11);
-    cin >> valorEmprestado;
 
-    gotoxy(42, 12);
-    cout << "Informe a taxa de juros mensal (em decimal): ";
-    gotoxy(42, 13);
-    cin >> taxaJuros;
-
-    if (valorEmprestado <= 0 || taxaJuros <= 0)
+    if (valorEmprestado <= 0 || taxaJuros <= 0 || meses <= 0)
     {
-        gotoxy(42, 14);
-        cout << "Informe um valor de empréstimo e uma taxa de juros válidos maiores que zero." << endl;
-        return 0.0;
-    }
-    gotoxy(42, 15);
-    cout << "Informe o número de meses para o empréstimo: ";
-    cin >> meses;
-
-    if (meses <= 0)
-    {
-        gotoxy(42, 16);
-        cout << "Informe um número de meses válido maior que zero." << endl;
+        gotoxy(42, 10);
+        cout << "Informe valores validos maiores que zero." << endl;
         return 0.0;
     }
 
     if (meses == 1)
     {
-        return valorEmprestado * (1 + taxaJuros);
+        resultado = valorEmprestado + valorEmprestado * taxaJuros;
     }
     else
     {
-        double saldoMesAnterior = calcularEmprestimo();
-        return saldoMesAnterior * (1 + taxaJuros);
+        resultado = calcularEmprestimo(valorEmprestado, taxaJuros, meses - 1);
+        resultado += resultado * taxaJuros;
     }
+
+
+            gotoxy(42, 14);
+            cout << "O saldo ao final do emprestimo e: R$ " << resultado << endl;
+
+            double juros = resultado - valorEmprestado;
+
+            gotoxy(42, 15);
+            cout << "Total de juros pagos: R$ " << juros << endl;
 }
 
 #endif
