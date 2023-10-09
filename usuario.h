@@ -40,7 +40,11 @@ void logarUsuario(Usuario *usuario)
 {
     *usuario = importarUsuario();
 
+     telaLogin();
+
+    gotoxy(42,17);
     cout << "Ola, " << usuario->nome << "!" << endl;
+    gotoxy(42,18);
     cout << "====================================================" << endl;
 
     int tentativas = 0;
@@ -49,23 +53,32 @@ void logarUsuario(Usuario *usuario)
     char opcao;
     while (true)
     {
+        gotoxy(42,19);
         cout << "Digite sua senha de login: " << endl;
+        gotoxy(42,20);
         getline(cin, senhaDigitada);
+        gotoxy(42,20);
+        cout << "                              " << endl;
 
         if (verificarSenha(senhaDigitada, usuario))
         {
+            gotoxy(42,21);
             cout << "Senha correta!" << endl;
             break;
         }
         else
         {
+            gotoxy(42,21);
             cout << "Senha incorreta!" << endl;
             if (++tentativas == 3)
             {
+                gotoxy(42,23);
                 cout << "Numero de tentativas excedido, conta bloqueada!" << endl;
+                gotoxy(42,24);
                 cout << "Contate o administrador do sistema." << endl;
-
+                gotoxy(42,25);
                 cout << "Deseja cadastrar um novo usuario? (S/N)" << endl;
+                gotoxy(42,26);
                 cin >> opcao;
 
                 if (opcao == 'S' || opcao == 's')
@@ -74,11 +87,13 @@ void logarUsuario(Usuario *usuario)
                 }
                 else
                 {
+                    gotoxy(42,26);
                     cout << "Obrigado por usar o programa!" << endl;
                     exit(0);
                 }
                 return;
             }
+            gotoxy(42,22);
             cout << "Voce tem mais " << 3 - tentativas << " tentativas." << endl;
         }
 
@@ -98,7 +113,6 @@ void novoCadastro(Usuario *novoUsuario)
     gotoxy(42, 19);
     cout << "Digite seu nome de usuario: " << endl;
     gotoxy(42, 20);
-    cin.ignore();
     getline(cin, novoUsuario->nome);
 
     gotoxy(42, 22);
