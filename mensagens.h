@@ -29,7 +29,7 @@ bool dataProxima(const string &dataVenc)
 
 int notificacao()
 {
-    ifstream arquivo("dados_financeiro.txt");
+    ifstream arquivo("dados_financeiros.txt");
     int n = 0;
     int l = 10;
 
@@ -62,7 +62,7 @@ int notificacao()
             if (dataProxima(despesaAtual.dataVenc))
             {
                 if (l == 26)
-                
+
                     confirmar(42, 27);
 
                 else

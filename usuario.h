@@ -136,6 +136,7 @@ void novoCadastro(Usuario *novoUsuario)
     cout << "====================================================" << endl
          << endl;
 
+    
     menuPrincipal();
 }
 
@@ -172,6 +173,9 @@ void editarUsuario(Usuario *usuario)
     gotoxy(50, 29);
     cout << "====================================================" << endl
          << endl;
+
+    
+    menuPrincipal();
 }
 
 void apagarUsuario(Usuario *novoUsuario)

@@ -1,2 +1,0 @@
-Nome: moradia
-Valor: 45
