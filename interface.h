@@ -7,6 +7,30 @@ void tela_incial();
 
 using namespace std;
 
+void telinha()
+{
+    moldurinha(0, 155, 0, 39, MAGENTA, WHITE);
+
+    moldurinha(30, 120, 8, 30, WHITE, BLACK);
+}
+void telaLogin()
+{
+    telinha();
+
+    gotoxy(55, 10);
+    cout<<" _             _  ";
+    gotoxy(55, 11);
+    cout<<"| | ___   __ _(_)_ __  ";
+    gotoxy(55, 12);
+    cout<<"| |/ _ \\ / _` | | '_ \\ ";
+    gotoxy(55, 13);
+    cout<<"| | (_) | (_| | | | | |";
+    gotoxy(55, 14);
+    cout<<"|_|\\___/ \\__, |_|_| |_|";
+    gotoxy(55, 15);
+    cout<<"         |___/ ";
+}
+
 void cabecalho()
 {
     moldurinha(0, 155, 0, 39, MAGENTA, WHITE);
@@ -66,19 +90,19 @@ void tela_incial()
     cout << "   (_)(_)(_)   (_)         (_)(_)         (_)     (_)      (_)(_)(_)(_)(_)(_)(_)(_)(_)         (_)(_)(_)(_)(_)         (_)(_)         (_)(_)         (_)";
 }
 
-void confirmar()
+void confirmar(int x,int y)
 {
     int chave = 0;
     textbackground(WHITE);
     textcolor(BLACK);
-    gotoxy(70, 29);
+    gotoxy(x+1,y+1);
     cout << "PRESSIONE ENTER";
     while (chave != 224 && chave != 13)
     {
-        gotoxy(70, 30);
+        gotoxy(x,y);
         textbackground(MAGENTA);
         std ::cout << "            ";
-        gotoxy(70, 30);
+        gotoxy(x,y);
         chave = getch();
     }
 }
@@ -127,10 +151,10 @@ void perfumariaMenuPerfil()
 {
     SetConsoleOutputCP(65001); // para permitir acentuação
 
-    gotoxy(64, 24);
+    gotoxy(70, 24);
     textbackground(WHITE);
     textcolor(BLACK);
-    cout << "ATUALIZAR USUÁRIO E SENHA";
+    cout << "EDITAR USUÁRIO";
     gotoxy(70, 29);
     textbackground(WHITE);
     textcolor(BLACK);
@@ -143,14 +167,16 @@ void perfumariaMenuPerfil()
 
 void perfumariaMenuCarteirinha()
 {
+    SetConsoleOutputCP(65001); // para permitir acentuação
+
     gotoxy(70, 24);
     textbackground(WHITE);
     textcolor(BLACK);
-    cout << "EDITAR DADOS";
+    cout << "DESPESAS DIÁRIAS";
     gotoxy(69, 29);
     textbackground(WHITE);
     textcolor(BLACK);
-    cout << "ADICIONAR DADOS";
+    cout << "MOSTRAR DESPESAS DIÁRIAS";
     gotoxy(74, 34);
     textbackground(WHITE);
     textcolor(BLACK);
